@@ -13,7 +13,7 @@ public class BoardDefinition {
 	Board b;
 	
 	@Given("length and width {int}")
-	public void length_and_width(int int1) {
+	public void length_and_width(Integer int1) {
 	    this.width = int1;
 	    this.length = int1;
 	}
@@ -23,7 +23,7 @@ public class BoardDefinition {
 	}
 	
 	@Then("make board with size {int}")
-	public void make_board_with_size_x(int int1) {
+	public void make_board_with_size_x(Integer int1) {
 	    assertArrayEquals(b.getSize(), new int[] {int1, int1});
 	}
 
