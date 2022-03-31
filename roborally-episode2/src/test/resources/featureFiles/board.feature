@@ -1,6 +1,6 @@
-@tag
+@board
 Feature: Board generation
-#As a board, when a player starts the game, I generate a 2D array board and initialise it with Tiles
+#As a board, when a player starts the game, I gene6rate a 2D array board and initialise it with Tiles
 
   @squareBoard
   Scenario: Making a square board

@@ -26,7 +26,6 @@ public class Board {
 		board[i][j] = new Tile();
 	    }
 	}
-
     }
 
     public void robotCorners() {
@@ -47,7 +46,6 @@ public class Board {
 	    robots.get(i).setDir();
 	    updateCorners(robots.get(i).getCorners());
 	}
-	
 	robotCorners();
     }
 
@@ -105,7 +103,6 @@ public class Board {
 
     public void spawnCheckpoint() {
 	getCenterTile().setType(TileType.Checkpoint);
-	System.out.println(getCenterTile().getType());
     }
 
     public Tile getCenterTile() {
