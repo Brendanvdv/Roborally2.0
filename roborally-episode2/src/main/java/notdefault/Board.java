@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class Board {
     private Tile[][] board;
-    private ArrayList<Robot> robots;
+    private ArrayList<Robot> robots = new ArrayList<Robot>();;
     private ArrayList<int[]> corners = new ArrayList<int[]>();
 
 
@@ -26,6 +26,13 @@ public class Board {
 		board[i][j] = new Tile();
 	    }
 	}
+
+    }
+
+    public void robotCorners() {
+	for (int i = 0; i < robots.size(); i++) {
+	    board[robots.get(i).getXY()[0]][robots.get(i).getXY()[1]].setType(TileType.Floor);
+	}
     }
 
     public int[] getSize() {
@@ -40,6 +47,8 @@ public class Board {
 	    robots.get(i).setDir();
 	    updateCorners(robots.get(i).getCorners());
 	}
+	
+	robotCorners();
     }
 
     public void spawnRobot(int num, int corner) {
@@ -123,7 +132,7 @@ public class Board {
 		if(row.getType().equals(TileType.Checkpoint)) {
 		    return true;
 		    //		}
-		}
+	    }
 	    }
 	}
 	return false;

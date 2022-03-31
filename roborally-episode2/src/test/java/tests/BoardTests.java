@@ -1,5 +1,6 @@
 package tests;
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import io.cucumber.java.en.Given;
@@ -7,13 +8,14 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import notdefault.Board;
 import notdefault.Tile;
+import notdefault.TileType;
 
 
 public class BoardTests {
 
     private int width;
     private int length;
-    Board b;
+    private Board b;
 
     @Given("length and width {int}")
     public void length_and_width(Integer int1) {
@@ -63,5 +65,22 @@ public class BoardTests {
 	    }
 	}
     }
+    
+    @Given("a board {int} by {int} is created and {int} robots are spawned")
+    public void a_board_by_is_created_and_robots_are_spawned(Integer int1, Integer int2, Integer int3) {
+        b = new Board(int1,int2);
+        b.spawnRobot(int3);
+    }
 
+    @When("the tiles are generated")
+    public void the_tiles_are_generated() {
+        b.robotCorners();
+    }
+
+    @Then("i want robots to stand on floor")
+    public void i_want_robots_to_stand_on_floor() {
+	for (int i = 0; i < b.getRobots().size(); i++) {
+	    assertEquals(b.getTile(b.getRobots().get(i).getXY()[0],b.getRobots().get(i).getXY()[1]).getType(),TileType.Floor);
+	}
+    }
 }
