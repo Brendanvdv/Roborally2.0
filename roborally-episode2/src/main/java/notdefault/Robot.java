@@ -28,7 +28,6 @@ public class Robot {
 	xCoord = corners.get(corner)[0];
 	yCoord = corners.get(corner)[1];
 	xyCoord = corners.get(corner);
-	System.out.println(xyCoord[0]+"   "+xyCoord[1]);
     }
 
     public void setDir() {

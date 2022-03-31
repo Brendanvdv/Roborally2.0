@@ -11,8 +11,9 @@ public class Board {
 
 
     public Board(int int1, int int2) {
-	this.rows = int1;
-	this.cols = int2;
+	
+	this.cols = int1;
+	this.rows = int2;
 	this.board = new Tile[cols][rows];
 	corners.add(new int[] {0,0});
 	corners.add(new int[] {rows-1,cols-1});
@@ -20,8 +21,16 @@ public class Board {
 	corners.add(new int[] {rows-1,0});
     }
 
+    public void init() {
+	for (int i = 0; i < board.length; i++) {
+	    for (int j = 0; j < board[0].length; j++) {
+		board[i][j] = new Tile();
+	    }
+	}
+    }
+
     public int[] getSize() {
-	return new int[] {board[0].length, board.length};
+	return new int[] {board.length, board[0].length};
     }
 
     public void spawnRobot(int num) {
@@ -33,7 +42,7 @@ public class Board {
 	    updateCorners(robots.get(i).getCorners());
 	}
     }
-    
+
     public void spawnRobot(int num, int corner) {
 	robots = new ArrayList<Robot>();
 	for(int i = 0; i<num; i++) {
@@ -80,6 +89,10 @@ public class Board {
 	    return true;
 	}
 	return false;
+    }
+
+    public Tile getTile(int int1, int int2) {
+	return board[int1][int2];
     }
 
 }
