@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Board {
     private int rows;
     private int cols;
-    private String[][] board;
+    private Tile[][] board;
     private ArrayList<Robot> robots;
     private ArrayList<int[]> corners = new ArrayList<int[]>();
 
@@ -13,7 +13,7 @@ public class Board {
     public Board(int int1, int int2) {
 	this.rows = int1;
 	this.cols = int2;
-	this.board = new String[cols][rows];
+	this.board = new Tile[cols][rows];
 	corners.add(new int[] {0,0});
 	corners.add(new int[] {rows-1,cols-1});
 	corners.add(new int[] {0,cols-1});
