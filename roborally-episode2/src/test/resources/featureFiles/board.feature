@@ -19,9 +19,22 @@ Feature: Board generation
   	When board is initialized
   	Then fill the board with tiles
   
-#After the robots are spawned, as a board I want to generate tiles so that the robot is not standing on the obstacle tiles
 	@noObstaclesUnderRobots
 	Scenario: I want to make sure there are no obstacles under robots
 		Given a board 10 by 10 is created and 2 robots are spawned
 		When the tiles are generated
 		Then i want robots to stand on floor
+		
+	@difficultyObstacles
+	Scenario: I want to make the board harder or simpler
+		Given an difficulty level <diff> and dimensions <len> and <wid> and <num> players
+		When the board is generated
+		Then there are between <low> and <high> floor tiles
+		
+		Examples:
+			| diff | num | len | wid | low | high |
+			|  1   |  2  | 10  | 10  | 40  |  70  |
+			|  2   |  2  | 10  | 10  | 30  |  60  |
+			|  3   |  2  | 10  | 10  | 20  |  50  |
+			
+	

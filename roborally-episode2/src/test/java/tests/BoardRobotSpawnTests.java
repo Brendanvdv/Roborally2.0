@@ -28,10 +28,10 @@ public class BoardRobotSpawnTests{
 
     @Then("robots are in opposite corners")
     public void robots_are_in_opposite_corners() {
-	assertTrue(b.inCorner());
 	assertEquals(b.getRobots().size(), 2);
 	assertEquals(b.getRobots().get(0).getX(), (b.getSize()[0]-1-b.getRobots().get(1).getX()));
 	assertEquals(b.getRobots().get(0).getY(), (b.getSize()[1]-1-b.getRobots().get(1).getY()));
+	assertTrue(b.inCorner());
     }
 
     @Then("one robot per corner")
@@ -41,15 +41,15 @@ public class BoardRobotSpawnTests{
 
     @Then("robots are in corners")
     public void robots_are_in_corners() {
-	assertTrue(b.inCorner());
 	assertEquals(b.getRobots().size(), 3);
+	assertTrue(b.inCorner());
     }
 
     @Then("robots are in all corners")
     public void robots_are_in_all_corners() {
 	assertEquals(b.getRobots().size(), 4);
-	assertTrue(b.inCorner());
 	assertFalse(b.overlap());
+	assertTrue(b.inCorner());
     }
 
     @Given("a corner {int}")

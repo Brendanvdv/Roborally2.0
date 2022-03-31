@@ -7,15 +7,19 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import notdefault.Board;
+import notdefault.Game;
 import notdefault.Tile;
 import notdefault.TileType;
 
 
 public class BoardTests {
 
-    private int width;
     private int length;
+    private int width;
+    private int playerAmount;
+    private int diff;
     private Board b;
+    private Game game;
 
     @Given("length and width {int}")
     public void length_and_width(Integer int1) {
@@ -65,16 +69,16 @@ public class BoardTests {
 	    }
 	}
     }
-    
+
     @Given("a board {int} by {int} is created and {int} robots are spawned")
     public void a_board_by_is_created_and_robots_are_spawned(Integer int1, Integer int2, Integer int3) {
-        b = new Board(int1,int2);
-        b.spawnRobot(int3);
+	b = new Board(int1,int2);
+	b.spawnRobot(int3);
     }
 
     @When("the tiles are generated")
     public void the_tiles_are_generated() {
-        b.robotCorners();
+	b.robotCorners();
     }
 
     @Then("i want robots to stand on floor")
@@ -82,5 +86,39 @@ public class BoardTests {
 	for (int i = 0; i < b.getRobots().size(); i++) {
 	    assertEquals(b.getTile(b.getRobots().get(i).getXY()[0],b.getRobots().get(i).getXY()[1]).getType(),TileType.Floor);
 	}
+    }
+
+    @Given("an difficulty level {int} and dimensions {int} and {int} and {int} players")
+    public void an_difficulty_level_and_dimensions_and_and_players(Integer int1, Integer int2, Integer int3, Integer int4) {
+	this.diff = int1;
+	this.length = int2;
+	this.width = int3;
+	this.playerAmount = int4;
+
+    }
+
+    @When("the board is generated")
+    public void the_board_is_generated() {
+	game = new Game();
+	game.setDiff(diff);
+	game.startGame(length,width,playerAmount,diff);
+    }
+
+    @Then("there are between {int} and {int} floor tiles")
+    public void there_are_between_and_floor_tiles(Integer int1, Integer int2) {
+	int average = 0;
+	for (int i = 0; i < 1000; i++) {
+	    int counter = 0;
+	    for (Tile [] column : game.getBoardArray()) {
+		for(Tile row : column) {
+		    if(row.getType().equals(TileType.Floor)) {
+			counter++;
+		    }
+		}
+	    }
+	    average = average + counter;
+	}
+	average = average/1000;
+	assertTrue(int1 <= average && average <= int2);
     }
 }
