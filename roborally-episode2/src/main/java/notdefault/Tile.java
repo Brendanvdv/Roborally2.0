@@ -3,7 +3,9 @@ package notdefault;
 public class Tile {
 
     private TileType type;
+    
     public Tile() {
+	init();
     }
     
     public void init() {
@@ -30,5 +32,8 @@ public class Tile {
     
     public TileType getType() {
 	return type;
+    }
+    public void setType(TileType tileType) {
+	type = tileType;
     }
  }

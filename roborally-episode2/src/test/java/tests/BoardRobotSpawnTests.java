@@ -15,14 +15,14 @@ public class BoardRobotSpawnTests{
     private int playerAmount;
     private Board b = new Board(11,11);
     private int corner;
-
-    @Given("Two {int} players")
-    public void two_players(Integer int1) {
+    
+    @Given("{int} players")
+    public void players(Integer int1) {
 	this.playerAmount = int1;
     }
 
-    @When("board spawns two robots")
-    public void board_spawns_two_robots() {
+    @When("board spawns robots")
+    public void board_spawns_robots() {
 	b.spawnRobot(playerAmount);
     }
 
@@ -34,40 +34,15 @@ public class BoardRobotSpawnTests{
 	assertEquals(b.getRobots().get(0).getY(), (b.getSize()[1]-1-b.getRobots().get(1).getY()));
     }
 
-    @Then("one robot per corner in two corners")
-    public void one_robot_per_corner_in_two_corners() {
+    @Then("one robot per corner")
+    public void one_robot_per_corner() {
 	assertFalse(b.overlap());
-    }
-
-    @Given("Three {int} players")
-    public void three_players(Integer int1) {
-	this.playerAmount = int1;
-    }
-
-    @When("board spawns three robots")
-    public void board_spawns_three_robots() {
-	b.spawnRobot(playerAmount);;
     }
 
     @Then("robots are in corners")
     public void robots_are_in_corners() {
 	assertTrue(b.inCorner());
 	assertEquals(b.getRobots().size(), 3);
-    }
-
-    @Then("one robot per corner in three corners")
-    public void one_robot_per_corner_in_three_corners() {
-	assertFalse(b.overlap());
-    }
-
-    @Given("Four {int} players")
-    public void four_players(Integer int1) {
-	this.playerAmount = int1;
-    }
-
-    @When("board spawns four robots")
-    public void board_spawns_four_robots() {
-	b.spawnRobot(playerAmount);
     }
 
     @Then("robots are in all corners")

@@ -1,24 +1,23 @@
 package notdefault;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Board {
-    private int rows;
-    private int cols;
     private Tile[][] board;
     private ArrayList<Robot> robots;
     private ArrayList<int[]> corners = new ArrayList<int[]>();
 
 
     public Board(int int1, int int2) {
-	
-	this.cols = int1;
-	this.rows = int2;
-	this.board = new Tile[cols][rows];
+
+	this.board = new Tile[int1][int2];
 	corners.add(new int[] {0,0});
-	corners.add(new int[] {rows-1,cols-1});
-	corners.add(new int[] {0,cols-1});
-	corners.add(new int[] {rows-1,0});
+	corners.add(new int[] {board[0].length-1,board.length-1});
+	corners.add(new int[] {0,board.length-1});
+	corners.add(new int[] {board[0].length-1,0});
+
+	init();
     }
 
     public void init() {
@@ -65,11 +64,11 @@ public class Board {
 	for(int i = 0; i<robots.size(); i++) {
 	    if(robots.get(i).getX() == 0 && robots.get(i).getY() == 0) {
 		return true;
-	    } else if(robots.get(i).getX() == rows-1 && robots.get(i).getY() == cols-1) {
+	    } else if(robots.get(i).getX() == board[0].length-1 && robots.get(i).getY() == board.length-1) {
 		return true;
-	    } else if(robots.get(i).getX() == 0 && robots.get(i).getY() == cols-1) {
+	    } else if(robots.get(i).getX() == 0 && robots.get(i).getY() == board.length-1) {
 		return true;
-	    } else if(robots.get(i).getX() == rows-1 && robots.get(i).getY() == 0) {
+	    } else if(robots.get(i).getX() == board[0].length-1 && robots.get(i).getY() == 0) {
 		return true;
 	    }
 	}
@@ -95,4 +94,38 @@ public class Board {
 	return board[int1][int2];
     }
 
+    public void spawnCheckpoint() {
+	getCenterTile().setType(TileType.Checkpoint);
+	System.out.println(getCenterTile().getType());
+    }
+
+    public Tile getCenterTile() {
+	double val = Math.random();
+	int x = 0;
+	if(val<0.5) {
+	    x = 1;
+	}
+
+	if(board.length-1%2 == 0 && board[0].length-1%2 == 0) {
+	    return board[board.length/2 - x][board[0].length/2 - x];
+	} else if(board.length-1%2 != 0 && board[0].length-1%2 == 0) {
+	    return board[(int) Math.floor(board.length/2)][board[0].length/2 - x];
+	} else if(board.length-1%2 == 0 && board[0].length-1%2 != 0) {
+	    return board[board.length/2 - x][(int) Math.floor(board[0].length/2)];
+	} else {
+	    return board[(int) Math.floor(board.length/2)][(int) Math.floor(board[0].length/2)];
+	}
+    }
+
+    public boolean hasCheckpoint() {
+	for(Tile[] column : board) {
+	    for(Tile row : column) {
+		if(row.getType().equals(TileType.Checkpoint)) {
+		    return true;
+		    //		}
+		}
+	    }
+	}
+	return false;
+    }
 }
