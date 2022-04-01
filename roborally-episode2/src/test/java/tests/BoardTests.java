@@ -108,8 +108,9 @@ public class BoardTests {
     public void there_are_between_and_floor_tiles(Integer int1, Integer int2) {
 	int average = 0;
 	for (int i = 0; i < 1000; i++) {
+	    Board board = new Board(length,width,diff);
 	    int counter = 0;
-	    for (Tile [] column : game.getBoardArray()) {
+	    for (Tile [] column : board.getBoard()) {
 		for(Tile row : column) {
 		    if(row.getType().equals(TileType.Floor)) {
 			counter++;
@@ -119,6 +120,7 @@ public class BoardTests {
 	    average = average + counter;
 	}
 	average = average/1000;
+	System.out.println(average);
 	assertTrue(int1 <= average && average <= int2);
     }
 }
