@@ -17,4 +17,8 @@ public class Player {
 	return actionCards;
     }
 
+    public void setActionCards(ArrayList<ActionCard> actionCards) {
+        this.actionCards = actionCards;
+    }
+
 }
