@@ -8,6 +8,7 @@ public class Board {
     private ArrayList<Robot> robots = new ArrayList<Robot>();;
     private ArrayList<int[]> corners = new ArrayList<int[]>();
     private boolean checkpoint = false;
+    private boolean overlap = true;
 
 
     public Board(int length, int width) {
@@ -58,6 +59,8 @@ public class Board {
 	    updateCorners(robots.get(i).getCorners());
 	}
 	robotCorners();
+	overlap();
+	inCorner();
     }
 
     public void spawnRobot(int num, int corner) {
@@ -68,26 +71,27 @@ public class Board {
 	    robots.get(i).setDir();
 	    updateCorners(robots.get(i).getCorners());
 	}
+	overlap();
+	inCorner();
     }
 
     public void updateCorners(ArrayList<int[]> c) {
 	corners = c;
     }
 
-    public boolean inCorner() {
+    public void inCorner() {
 	
 	for(int i = 0; i<robots.size(); i++) {
 	    if(robots.get(i).getX() != 0 && robots.get(i).getX() != board.length-1) {
-		return false;
+		robots.get(i).setInCorner(false);
 	    }
 	    if(robots.get(i).getY() != 0 && robots.get(i).getY() != board[0].length-1) {
-		return false;
+		robots.get(i).setInCorner(false);
 	    }
 	}
-	return true;
     }
 
-    public boolean overlap() {
+    public void overlap() {
 	int temp = robots.size();
 	for(Robot robot:robots) {
 	    for(int i = 0; i < robots.size(); i++) {
@@ -97,9 +101,8 @@ public class Board {
 	    }
 	}
 	if(temp == 0) {
-	    return false;
+	    overlap = false;
 	}
-	return true;
     }
 
     public void spawnCheckpoint() {
@@ -144,5 +147,9 @@ public class Board {
     
     public Tile[][] getBoard() {
 	return board;
+    }
+    
+    public boolean getOverlap() {
+	return overlap;
     }
 }

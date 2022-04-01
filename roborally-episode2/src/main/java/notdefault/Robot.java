@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Robot {
     private ArrayList<int[]> corners = new ArrayList<int[]>();
+    private boolean inCorner = true;
     private int xCoord;
     private int yCoord;
     private int[] xyCoord;
@@ -60,6 +61,14 @@ public class Robot {
 
     public int getDir() {
 	return direction;
+    }
+
+    public boolean isInCorner() {
+	return inCorner;
+    }
+
+    public void setInCorner(boolean inCorner) {
+	this.inCorner = inCorner;
     }
 
 }

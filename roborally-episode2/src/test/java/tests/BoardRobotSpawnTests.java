@@ -31,25 +31,32 @@ public class BoardRobotSpawnTests{
 	assertEquals(b.getRobots().size(), 2);
 	assertEquals(b.getRobots().get(0).getX(), (b.getSize()[0]-1-b.getRobots().get(1).getX()));
 	assertEquals(b.getRobots().get(0).getY(), (b.getSize()[1]-1-b.getRobots().get(1).getY()));
-	assertTrue(b.inCorner());
+	for (int i = 0; i < b.getRobots().size(); i++) {
+	    assertTrue(b.getRobots().get(i).isInCorner());
+	}
     }
 
     @Then("one robot per corner")
     public void one_robot_per_corner() {
-	assertFalse(b.overlap());
+	assertFalse(b.getOverlap());
     }
 
     @Then("robots are in corners")
     public void robots_are_in_corners() {
 	assertEquals(b.getRobots().size(), 3);
-	assertTrue(b.inCorner());
+	for (int i = 0; i < b.getRobots().size(); i++) {
+	    assertTrue(b.getRobots().get(i).isInCorner());
+	}
     }
 
     @Then("robots are in all corners")
     public void robots_are_in_all_corners() {
 	assertEquals(b.getRobots().size(), 4);
-	assertFalse(b.overlap());
-	assertTrue(b.inCorner());
+	for (int i = 0; i < b.getRobots().size(); i++) {
+	    assertTrue(b.getRobots().get(i).isInCorner());
+	}
+	assertFalse(b.getOverlap());
+	
     }
 
     @Given("a corner {int}")
