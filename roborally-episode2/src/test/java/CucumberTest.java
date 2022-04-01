@@ -3,7 +3,10 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/featureFiles", publish = true)
+@CucumberOptions(
+	features = {"src/test/resources/featureFiles"}, 
+	plugin = {"pretty"},
+	publish = true)
 
 public class CucumberTest {
 
