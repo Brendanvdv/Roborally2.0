@@ -1,4 +1,4 @@
-@game
+@gameStarts
 Feature: game starts
 
 	@gameStart

@@ -71,4 +71,12 @@ public class Game {
     public int[] getBoardDim() {
 	return boardDim;
     }
+
+    public ArrayList<Player> getPlayers() {
+	return players;
+    }
+
+    public void startTurn(Player player) {
+	player.makeActionCards();
+    }
 }
