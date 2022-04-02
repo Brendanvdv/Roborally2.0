@@ -1,6 +1,6 @@
-package notdefault;
+package rebuild;
 
-public enum TileType {
+public enum TyleType {
     Acid,
     Pit,
     Barrel,

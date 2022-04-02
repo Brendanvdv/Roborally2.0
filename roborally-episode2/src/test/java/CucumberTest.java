@@ -4,7 +4,7 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-	features = {"src/test/resources/featureFiles"}, 
+	features = {"src/test/resources/newFeatureFiles"}, 
 	plugin = {"pretty"},
 	publish = true)
 
