@@ -5,7 +5,7 @@ Feature: game starts
 	Scenario: make tiles
 		Given A board of length 10 and width 10 and 4 players and difficulty 1
 		When Game starts
-		And I want the board to be random tiles
+		Then I want the board to be random tiles
 		And there should be a checkpoint in the center
 		
 	Scenario: spawn robots
