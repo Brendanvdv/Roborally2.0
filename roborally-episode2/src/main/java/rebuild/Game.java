@@ -33,7 +33,7 @@ public class Game {
 	directions.add(1); directions.add(2); directions.add(3); directions.add(0);
 	
 	for (Robot robot : getRobots()) {
-	    robot.setCoor(corners.get(0));
+	    robot.setCoordinate(corners.get(0));
 	    corners.remove(0);
 	    robot.setInCorner(true);
 	    robot.setDir(directions.get(0));
@@ -78,7 +78,20 @@ public class Game {
 	return players;
     }
 
-    public void startTurn(Player player) {
-	player.makeActionCards();
+    public void startTurn() {
+	for(Player player : players) {
+	    player.makeActionCards();
+	    player.setMoved(false);
+	}
+    }
+
+    public void execMoves() {
+	for(int i = 0; i < 4; i++) {
+	    for(int j = 0; j < players.size(); j++) {
+		players.get(i).execHand(j);
+	    }
+	    
+	    players.get(i).setMoved(true);
+	}
     }
 }

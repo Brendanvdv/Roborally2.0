@@ -5,6 +5,13 @@ public class Robot {
     private int[] coordinate;
     private boolean inCorner = false;
     private int dir;
+    
+    public Robot(int xCoor, int yCoor, int direction) {
+	coordinate = new int[] {xCoor,yCoor};
+	dir = direction;
+    }
+    
+    Robot(){}
 
     public boolean isInCorner() {
 	return inCorner;
@@ -14,10 +21,6 @@ public class Robot {
         this.inCorner = inCorner;
     }
     
-    public void setCoor(int[] coor) {
-	setCoordinate(coor);
-    }
-
     public int getDir() {
 	return dir;
     }
