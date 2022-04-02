@@ -13,6 +13,11 @@ Feature: game starts
 		When Game starts
 		Then robots are spawned in the corners
 		And that there are no obstacles where the robots are at
+		
+	Scenario: spawn obstacles
+		Given A board of length 10 and width 10 and 4 players and difficulty 1
+		When Game starts
+		Then spawn obstacles on the board
 	
 	Scenario: check the board dimensions
 		Given A board of length <len> and width <wid> and 4 players and difficulty 1

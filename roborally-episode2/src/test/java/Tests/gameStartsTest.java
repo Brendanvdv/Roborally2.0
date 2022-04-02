@@ -56,6 +56,15 @@ public class gameStartsTest {
 	    }
 	}
     }
+    
+    @Then("spawn obstacles on the board")
+    public void spawn_obstacles_on_the_board() {
+	for(Tile[] column : game.getBoard().getTiles()) {
+	    for(Tile row : column) {
+		assertTrue(row.validObstacle());
+	    }
+	}
+    }
 
     @Then("there should be between {int} and {int} Floor tiles")
     public void there_should_be_between_and_floor_tiles_at_difficulty(Integer int1, Integer int2) {

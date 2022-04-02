@@ -29,13 +29,15 @@ public class Game {
 	corners.add(new int[] {0,boardDim[1]-1});
 	corners.add(new int[] {boardDim[0]-1,0});
 	
-	int[] directions = new int[] {1,2,3,0};
+	ArrayList<Integer> directions = new ArrayList<Integer>();
+	directions.add(1); directions.add(2); directions.add(3); directions.add(0);
 	
-	for (int i = 0; i < players.size(); i++) {
-	    players.get(i).getRobot().setCoor(corners.get(i));
-	    players.get(i).getRobot().setInCorner(true);
-	    
-	    players.get(i).getRobot().setDir(directions[i]);
+	for (Robot robot : getRobots()) {
+	    robot.setCoor(corners.get(0));
+	    corners.remove(0);
+	    robot.setInCorner(true);
+	    robot.setDir(directions.get(0));
+	    directions.remove(0);
 	}
 	
 	for (int i = 0; i < players.size(); i++) {
