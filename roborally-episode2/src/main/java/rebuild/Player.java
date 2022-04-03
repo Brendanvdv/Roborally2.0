@@ -63,7 +63,7 @@ public class Player {
 	if(validMove(actionCard)) {
 	    if(actionCard.isMovement()) {
 		move(actionCard);
-
+		
 		obstacleInteract();
 	    } else {
 		rotate(actionCard);
@@ -98,6 +98,14 @@ public class Player {
 	obstacle = board.getTile(robot.getCoordinate()).getObstacle();
 
 	robot.takeDamage(obstacle);
+	
+	if(obstacle.getType().equals("Barrel")) {
+	    rotate(new ActionCard(CardType.UTurn));
+	    move(new ActionCard(CardType.Move1));
+	    rotate(new ActionCard(CardType.UTurn));
+	}
+	
+
 	
     }
 
@@ -137,6 +145,10 @@ public class Player {
 
     public void setBoard(Board board2) {
 	board = board2;
+    }
+    
+    public Board getBoard() {
+	return board;
     }
 
 

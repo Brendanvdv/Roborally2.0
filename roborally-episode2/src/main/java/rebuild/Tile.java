@@ -20,28 +20,28 @@ public class Tile {
 
 	if(val < x) {
 	    type = TyleType.Floor;
-	    obstacle = new Obstacle();
+	    obstacle = new Obstacle("Floor");
 	} else if(val < x+y) {
 	    type = TyleType.Pit;
-	    obstacle = new Pit();
+	    obstacle = new Obstacle("Pit");
 	} else if(val < x+2*y) {
 	    type = TyleType.Barrel;
-	    obstacle = new Barrel();
+	    obstacle = new Obstacle("Barrel");
 	} else if(val < x+3*y) {
 	    type = TyleType.Laser;
-	    obstacle = new Laser();
+	    obstacle = new Obstacle("Laser");
 	} else if(val < x+4*y) {
 	    type = TyleType.Acid;
-	    obstacle = new Acid();
+	    obstacle = new Obstacle("Acid");
 	} else if(val < x+5*y) {
 	    type = TyleType.Health;
-	    obstacle = new Health();
+	    obstacle = new Obstacle("Health");
 	} else if(val < x+6*y) {
 	    type = TyleType.Conveyor;
-	    obstacle = new Conveyor();
+	    obstacle = new Obstacle("Conveyor");
 	} else {
 	    type = TyleType.Gear;
-	    obstacle = new Gear();
+	    obstacle = new Obstacle("Gear");
 	}
     }
 
@@ -63,5 +63,9 @@ public class Tile {
 
     public Obstacle getObstacle() {
 	return obstacle;
+    }
+    
+    public void setObstacle(Obstacle obs) {
+	obstacle = obs;
     }
 }
