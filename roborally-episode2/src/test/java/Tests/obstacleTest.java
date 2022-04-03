@@ -67,7 +67,7 @@ public class obstacleTest {
 	Tile tile = new Tile(2);
 	Obstacle obstacle = new Obstacle("Barrel");
 	
-	tile.setObstacle(obstacle); tile.setType(TyleType.Pit);
+	tile.setObstacle(obstacle); tile.setType(TyleType.Barrel);
 	brd.setTile(1,0,tile);
         game.setBoard(brd);
         
@@ -93,9 +93,31 @@ public class obstacleTest {
 	Tile tile = new Tile(2);
 	Obstacle obstacle = new Obstacle("Health");
 	
-	tile.setObstacle(obstacle); tile.setType(TyleType.Pit);
+	tile.setObstacle(obstacle); tile.setType(TyleType.Health);
 	brd.setTile(1,0,tile); brd.setTile(2,0,tile);
 	brd.setTile(3,0,tile); brd.setTile(4,0,tile);
+        game.setBoard(brd);
+    }
+    
+    @When("a gear tile")
+    public void a_gear_tile() {
+	Board brd = game.getBoard();
+	Tile tile = new Tile(2);
+	Obstacle obstacle = new Obstacle("Gear");
+	
+	tile.setObstacle(obstacle); tile.setType(TyleType.Gear);
+	brd.setTile(1,0,tile);
+        game.setBoard(brd);
+    }
+    
+    @When("a conveyor tile")
+    public void a_conveyor_tile() {
+	Board brd = game.getBoard();
+	Tile tile = new Tile(2);
+	Obstacle obstacle = new Obstacle("Conveyor");
+	
+	tile.setObstacle(obstacle); tile.setType(TyleType.Conveyor);
+	brd.setTile(1,0,tile);
         game.setBoard(brd);
     }
 
@@ -121,5 +143,15 @@ public class obstacleTest {
     @Then("robots life should go up")
     public void robots_life_should_go_up() {
         assertTrue(3 < game.getRobots().get(0).getLives());
+    }
+    
+    @Then("robot turns")
+    public void turns() {
+        assertTrue(game.getRobots().get(0).getDir() != 1);
+    }
+    
+    @Then("robot moves")
+    public void robot_moves() {
+        assertTrue(3 < game.getRobots().get(0).getCoordinate()[0] || 0 < game.getRobots().get(0).getCoordinate()[1]);
     }
 }

@@ -105,6 +105,15 @@ public class Player {
 	    move(new ActionCard(CardType.Move1));
 	    rotate(new ActionCard(CardType.UTurn));
 	}
+	
+	if(obstacle.getType().equals("Gear")) {
+	    System.out.println("stepped on gear " + robot.getDir());
+	    rotate(new ActionCard(CardType.TurnR));
+	}
+	
+	if(obstacle.getType().equals("Conveyor")) {
+	    move(new ActionCard(CardType.Move1));
+	}
     }
 
     public boolean validMove(ActionCard actionCard) {
