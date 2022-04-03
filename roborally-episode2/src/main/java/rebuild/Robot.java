@@ -5,6 +5,7 @@ public class Robot {
     private int[] coordinate;
     private boolean inCorner = false;
     private int dir;
+    private boolean dead = false;
     
     public Robot(int xCoor, int yCoor, int direction) {
 	coordinate = new int[] {xCoor,yCoor};
@@ -41,7 +42,21 @@ public class Robot {
 	lives = lives - obstacle.getDamage();
     }
     
+    public void takeDamage(int damage) {
+	lives = lives - damage;
+    }
+    
     public int getLives() {
 	return lives;
+    }
+
+    public boolean isDead() {
+	return dead;
+    }
+
+    public void checkDead() {
+	if(lives <= 0) {
+	    dead = true;
+	}
     }
 }

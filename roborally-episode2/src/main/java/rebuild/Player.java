@@ -65,6 +65,8 @@ public class Player {
 		move(actionCard);
 		
 		obstacleInteract();
+		
+		robot.checkDead();
 	    } else {
 		rotate(actionCard);
 	    }

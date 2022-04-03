@@ -91,14 +91,25 @@ public class Game {
     }
 
     public void execMoves() {
+	ArrayList<Player> playersSurvived = new ArrayList<Player>();
 	
 	for(int i = 0; i < 4; i++) {
 	    for(Player player : players) {
 		player.setBoard(board);
 		player.execHand(i);
+		
+		
 	    }
 	    players.get(i).setMoved(true);
 	}
+	
+	for(Player player : players) {
+	    if(!player.getRobot().isDead()) {
+		    playersSurvived.add(player);
+		}
+	}
+	
+	players = playersSurvived;
     }
 
     public void setBoard(Board brd) {
