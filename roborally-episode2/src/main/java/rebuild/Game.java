@@ -1,6 +1,7 @@
 package rebuild;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Game {
     private Board board;
@@ -52,7 +53,11 @@ public class Game {
 	
 	for (int i = 0; i < playerAmount; i++) {
 	    players.add(new Player());
-	    players.get(i).setBoardDim(boardDim);
+	}
+	
+	for(Player player : players) {
+	    player.setBoard(board);
+	    player.setBoardDim(boardDim);
 	}
     }
 
@@ -82,8 +87,7 @@ public class Game {
     public void startTurn() {
 	for(Player player : players) {
 	    player.makeActionCards();
-	    player.setMoved(false);
-	}
+	    player.setMoved(false);	}
     }
 
     public void execMoves() {
@@ -91,7 +95,6 @@ public class Game {
 	    for(int j = 0; j < players.size(); j++) {
 		players.get(i).execHand(j);
 	    }
-	    
 	    players.get(i).setMoved(true);
 	}
     }

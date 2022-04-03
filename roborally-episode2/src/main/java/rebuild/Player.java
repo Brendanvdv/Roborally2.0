@@ -2,6 +2,7 @@ package rebuild;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Objects;
 
 public class Player {
     private int[] boardDim;
@@ -9,6 +10,7 @@ public class Player {
     private ArrayList<ActionCard> actionCards;
     private ArrayList<ActionCard> hand;
     private boolean moved;
+    private Board board;
 
     public Player() {
 	robot = new Robot();
@@ -60,25 +62,42 @@ public class Player {
     public void execCard(ActionCard actionCard) {
 	if(validMove(actionCard)) {
 	    if(actionCard.isMovement()) {
-		    if(robot.getDir() == 1) {
-			robot.setCoordinate(new int[] {robot.getCoordinate()[0]+actionCard.getMagnitude(),robot.getCoordinate()[1]});
-		    } else if(robot.getDir() == 2) {
-			robot.setCoordinate(new int[] {robot.getCoordinate()[0],robot.getCoordinate()[1]+actionCard.getMagnitude()});
-		    } else if(robot.getDir() == 3) {
-			robot.setCoordinate(new int[] {robot.getCoordinate()[0]-actionCard.getMagnitude(),robot.getCoordinate()[1]});
-		    } else if(robot.getDir() == 0) {
-			robot.setCoordinate(new int[] {robot.getCoordinate()[0],robot.getCoordinate()[1]-actionCard.getMagnitude()});
-		    }
-		} else {
-		    if(actionCard.getCardType().equals(CardType.TurnL)) {
-			robot.setDir((robot.getDir()-1)%4);
-		    } else if(actionCard.getCardType().equals(CardType.TurnR)) {
-			robot.setDir((robot.getDir()+1)%4);
-		    } else if(actionCard.getCardType().equals(CardType.UTurn)) {
-			robot.setDir((robot.getDir()+2)%4);
-		    }
-		}
+		move(actionCard);
+
+		obstacleInteract();
+	    } else {
+		rotate(actionCard);
+	    }
 	}
+    }
+
+    public void move(ActionCard actionCard) {
+	if(robot.getDir() == 1) {
+	    robot.setCoordinate(new int[] {robot.getCoordinate()[0]+actionCard.getMagnitude(),robot.getCoordinate()[1]});
+	} else if(robot.getDir() == 2) {
+	    robot.setCoordinate(new int[] {robot.getCoordinate()[0],robot.getCoordinate()[1]+actionCard.getMagnitude()});
+	} else if(robot.getDir() == 3) {
+	    robot.setCoordinate(new int[] {robot.getCoordinate()[0]-actionCard.getMagnitude(),robot.getCoordinate()[1]});
+	} else if(robot.getDir() == 0) {
+	    robot.setCoordinate(new int[] {robot.getCoordinate()[0],robot.getCoordinate()[1]-actionCard.getMagnitude()});
+	}
+    }
+
+    public void rotate(ActionCard actionCard) {
+	if(actionCard.getCardType().equals(CardType.TurnL)) {
+	    robot.setDir((robot.getDir()-1)%4);
+	} else if(actionCard.getCardType().equals(CardType.TurnR)) {
+	    robot.setDir((robot.getDir()+1)%4);
+	} else if(actionCard.getCardType().equals(CardType.UTurn)) {
+	    robot.setDir((robot.getDir()+2)%4);
+	}
+    }
+    private void obstacleInteract() {
+	Obstacle obstacle;
+
+	obstacle = board.getTile(robot.getCoordinate()).getObstacle();
+
+	robot.takeDamage(obstacle);
 	
     }
 
@@ -103,16 +122,22 @@ public class Player {
 		    valid = true;
 		}
 	    }
+
+
 	} else {
 	    valid = true;
 	}
 	
-	System.out.println(robot.getCoordinate()[0] + "  " + robot.getCoordinate()[1]);
 	return valid;
     }
 
-    public void setBoardDim(int[] boardDim) {
-	this.boardDim = boardDim;
+    public void setBoardDim(int[] boardSize) {
+	boardDim = boardSize;
     }
+
+    public void setBoard(Board board2) {
+	board = board2;
+    }
+
 
 }

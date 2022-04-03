@@ -1,7 +1,7 @@
 package rebuild;
 
 public class Robot {
-    
+    private int lives = 3;
     private int[] coordinate;
     private boolean inCorner = false;
     private int dir;
@@ -37,4 +37,11 @@ public class Robot {
 	this.coordinate = coordinate;
     }
 
+    public void takeDamage(Obstacle obstacle) {
+	lives = lives - obstacle.getDamage();
+    }
+    
+    public int getLives() {
+	return lives;
+    }
 }
