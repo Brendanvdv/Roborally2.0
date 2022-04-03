@@ -11,6 +11,7 @@ public class Player {
     private ArrayList<ActionCard> hand;
     private boolean moved;
     private Board board;
+    private boolean stopTurn = false;
 
     public Player() {
 	robot = new Robot();
@@ -61,15 +62,18 @@ public class Player {
     }
 
     public void execCard(ActionCard actionCard) {
-	if(validMove(actionCard)) {
-	    if(actionCard.isMovement()) {
-		move(actionCard);
-		
-		obstacleInteract();
-	    } else {
-		rotate(actionCard);
+	if(!stopTurn) {
+	    if(validMove(actionCard)) {
+		if(actionCard.isMovement()) {
+		    move(actionCard);
+
+		    obstacleInteract();
+		} else {
+		    rotate(actionCard);
+		}
 	    }
 	}
+
     }
 
     public void move(ActionCard actionCard) {
@@ -99,20 +103,24 @@ public class Player {
 	obstacle = board.getTile(robot.getCoordinate()).getObstacle();
 
 	robot.takeDamage(obstacle);
-	
+
 	if(obstacle.getType().equals("Barrel")) {
 	    rotate(new ActionCard(CardType.UTurn));
 	    move(new ActionCard(CardType.Move1));
 	    rotate(new ActionCard(CardType.UTurn));
 	}
-	
+
 	if(obstacle.getType().equals("Gear")) {
 	    System.out.println("stepped on gear " + robot.getDir());
 	    rotate(new ActionCard(CardType.TurnR));
 	}
-	
+
 	if(obstacle.getType().equals("Conveyor")) {
 	    move(new ActionCard(CardType.Move1));
+	}
+
+	if(obstacle.getType().equals("Acid")) {
+	    setStopTurn(true);
 	}
     }
 
@@ -142,7 +150,7 @@ public class Player {
 	} else {
 	    valid = true;
 	}
-	
+
 	return valid;
     }
 
@@ -153,9 +161,17 @@ public class Player {
     public void setBoard(Board board2) {
 	board = board2;
     }
-    
+
     public Board getBoard() {
 	return board;
+    }
+
+    public boolean isStopTurn() {
+	return stopTurn;
+    }
+
+    public void setStopTurn(boolean stopTurn) {
+	this.stopTurn = stopTurn;
     }
 
 

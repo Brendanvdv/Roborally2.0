@@ -87,7 +87,9 @@ public class Game {
     public void startTurn() {
 	for(Player player : players) {
 	    player.makeActionCards();
-	    player.setMoved(false);	}
+	    player.setMoved(false);
+	    player.setStopTurn(false);
+	}
     }
 
     public void execMoves() {
