@@ -57,6 +57,7 @@ public class Player {
 
     public void execHand(int j) {
 	execCard(hand.get(j));
+	robot.checkDead();
     }
 
     public void execCard(ActionCard actionCard) {
@@ -65,8 +66,6 @@ public class Player {
 		move(actionCard);
 		
 		obstacleInteract();
-		
-		robot.checkDead();
 	    } else {
 		rotate(actionCard);
 	    }
@@ -106,9 +105,6 @@ public class Player {
 	    move(new ActionCard(CardType.Move1));
 	    rotate(new ActionCard(CardType.UTurn));
 	}
-	
-
-	
     }
 
     public boolean validMove(ActionCard actionCard) {
