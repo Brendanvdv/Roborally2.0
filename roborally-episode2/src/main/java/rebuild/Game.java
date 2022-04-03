@@ -52,6 +52,7 @@ public class Game {
 	
 	for (int i = 0; i < playerAmount; i++) {
 	    players.add(new Player());
+	    players.get(i).setBoardDim(boardDim);
 	}
     }
 
