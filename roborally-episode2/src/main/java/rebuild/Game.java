@@ -99,9 +99,8 @@ public class Game {
 	    for(Player player : players) {
 		player.setBoard(board);
 		player.execHand(i);
-		
-		
-	    }
+	    }	   
+	    
 	    players.get(i).setMoved(true);
 	}
 	

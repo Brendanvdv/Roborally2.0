@@ -120,6 +120,17 @@ public class obstacleTest {
 	brd.setTile(1,0,tile);
         game.setBoard(brd);
     }
+    
+    @When("an acid tile")
+    public void an_acid_tile() {
+	Board brd = game.getBoard();
+	Tile tile = new Tile(2);
+	Obstacle obstacle = new Obstacle("Acid");
+	
+	tile.setObstacle(obstacle); tile.setType(TyleType.Acid);
+	brd.setTile(1,0,tile);
+        game.setBoard(brd);
+    }
 
     @Then("obstacles are generated on tiles")
     public void obstacles_are_generated_on_tiles() {
@@ -153,5 +164,10 @@ public class obstacleTest {
     @Then("robot moves")
     public void robot_moves() {
         assertTrue(3 < game.getRobots().get(0).getCoordinate()[0] || 0 < game.getRobots().get(0).getCoordinate()[1]);
+    }
+    
+    @Then("robot stops moving")
+    public void robot_stops_moving() {
+        assertArrayEquals(game.getRobots().get(0).getCoordinate(), new int[] {1,0});
     }
 }

@@ -49,6 +49,7 @@ public class Board {
 
     public void putRobotOn(int[] coordinate) {
 	board[coordinate[0]][coordinate[1]].setType(TyleType.Floor);
+	board[coordinate[0]][coordinate[1]].setObstacle(new Obstacle("Floor"));
     }
 
     public void setTile(int x, int y, Tile tile) {

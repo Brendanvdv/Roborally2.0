@@ -111,7 +111,6 @@ public class Player {
 	}
 
 	if(obstacle.getType().equals("Gear")) {
-	    System.out.println("stepped on gear " + robot.getDir());
 	    rotate(new ActionCard(CardType.TurnR));
 	}
 
@@ -145,8 +144,6 @@ public class Player {
 		    valid = true;
 		}
 	    }
-
-
 	} else {
 	    valid = true;
 	}

@@ -9,6 +9,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import rebuild.Board;
 import rebuild.Game;
+import rebuild.Robot;
 import rebuild.Tile;
 import rebuild.TyleType;
 
@@ -31,15 +32,13 @@ public class gameStartsTest {
     @Then("make a board of {int} x {int} with {int} robots on it")
     public void make_a_board_of_x_with_robots_on_it(Integer int1, Integer int2, Integer int3) {
 	assertArrayEquals(game.getBoardDim(), new int[] {int1,int2});
-	assertEquals(game.getRobots().size(),int3.intValue());
+	assertEquals(game.getRobots().size(), (int) int3);
     }
-
-
 
     @Then("robots are spawned in the corners")
     public void robots_are_spawned_in_the_corners() {
-	for (int i = 0; i < game.getRobots().size(); i++) {
-	    assertTrue(game.getRobots().get(i).isInCorner());
+	for (Robot robot : game.getRobots()) {
+	    assertTrue(robot.isInCorner());
 	}
     }
 
