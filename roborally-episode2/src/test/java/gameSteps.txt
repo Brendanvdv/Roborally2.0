@@ -1,0 +1,10 @@
+
+Game game = new Game(int length, int width, int playerAmount, int difficulty);
+
+game.startTurn();
+
+This is when players click on buttons to select cards, once all players selected:
+
+game.execMoves;
+
+And now you loop back to LINE_4
