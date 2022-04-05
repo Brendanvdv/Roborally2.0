@@ -3,6 +3,8 @@ package rebuild;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import javax.swing.JFrame;
+
 public class Game {
     private Board board;
     private int[] boardDim;
@@ -100,8 +102,6 @@ public class Game {
 		player.setBoard(board);
 		player.execHand(i);
 	    }	   
-	    
-	    players.get(i).setMoved(true);
 	}
 	
 	for(Player player : players) {
@@ -115,5 +115,12 @@ public class Game {
 
     public void setBoard(Board brd) {
 	board = brd;
+    }
+    
+    public void play(JFrame f) {
+	f.add(board);
+	f.setSize(700,700);
+//	f.setVisible(true);
+//	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

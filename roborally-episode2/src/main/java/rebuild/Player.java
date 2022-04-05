@@ -62,6 +62,8 @@ public class Player {
     }
 
     public void execCard(ActionCard actionCard) {
+	setMoved(true);
+	
 	if(!stopTurn) {
 	    if(validMove(actionCard)) {
 		if(actionCard.isMovement()) {
@@ -101,7 +103,7 @@ public class Player {
 	Obstacle obstacle;
 
 	obstacle = board.getTile(robot.getCoordinate()).getObstacle();
-
+	
 	robot.takeDamage(obstacle);
 
 	if(obstacle.getType().equals("Barrel")) {
@@ -110,12 +112,24 @@ public class Player {
 	    rotate(new ActionCard(CardType.UTurn));
 	}
 
-	if(obstacle.getType().equals("Gear")) {
+	if(obstacle.getType().equals("GearR")) {
 	    rotate(new ActionCard(CardType.TurnR));
 	}
+	
+	if(obstacle.getType().equals("GearL")) {
+	    rotate(new ActionCard(CardType.TurnL));
+	}
 
-	if(obstacle.getType().equals("Conveyor")) {
+	if(obstacle.getType().equals("Conveyor1")) {
 	    move(new ActionCard(CardType.Move1));
+	}
+	
+	if(obstacle.getType().equals("Conveyor2")) {
+	    move(new ActionCard(CardType.Move2));
+	}
+	
+	if(obstacle.getType().equals("Conveyor3")) {
+	    move(new ActionCard(CardType.Move3));
 	}
 
 	if(obstacle.getType().equals("Acid")) {

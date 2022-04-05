@@ -41,7 +41,7 @@ public class obstacleTest {
 
     @When("turn started")
     public void turn_started() {
-        game.startTurn();
+	game.startTurn();
     }
 
     @When("players chose their cards")
@@ -51,7 +51,7 @@ public class obstacleTest {
 
 	    hand.add(new ActionCard(CardType.Move1));hand.add(new ActionCard(CardType.Move1));
 	    hand.add(new ActionCard(CardType.Move1));hand.add(new ActionCard(CardType.Move1));
-	    
+
 	    player.setHand(hand);
 	}
     }
@@ -60,76 +60,112 @@ public class obstacleTest {
     public void cards_are_being_executed() {
 	game.execMoves();
     }
-    
+
     @When("a barrel tile")
     public void a_barrel_tile() {
 	Board brd = game.getBoard();
 	Tile tile = new Tile(2);
 	Obstacle obstacle = new Obstacle("Barrel");
-	
+
 	tile.setObstacle(obstacle); tile.setType(TyleType.Barrel);
 	brd.setTile(1,0,tile);
-        game.setBoard(brd);
-        
-        robot = game.getRobots().get(0);
+	game.setBoard(brd);
+
+	robot = game.getRobots().get(0);
     }
-    
+
     @When("a pit tile")
     public void a_pit_tile() {
 	Board brd = game.getBoard();
 	Tile tile = new Tile(2);
 	Obstacle obstacle = new Obstacle("Pit");
-	
+
 	tile.setObstacle(obstacle); tile.setType(TyleType.Pit);
 	brd.setTile(1,0,tile);
-        game.setBoard(brd);
-        
-        robot = game.getRobots().get(0);
+	game.setBoard(brd);
+
+	robot = game.getRobots().get(0);
     }
-    
+
     @When("a health tile")
     public void a_health_tile() {
 	Board brd = game.getBoard();
 	Tile tile = new Tile(2);
 	Obstacle obstacle = new Obstacle("Health");
-	
+
 	tile.setObstacle(obstacle); tile.setType(TyleType.Health);
 	brd.setTile(1,0,tile); brd.setTile(2,0,tile);
 	brd.setTile(3,0,tile); brd.setTile(4,0,tile);
-        game.setBoard(brd);
+	game.setBoard(brd);
     }
-    
-    @When("a gear tile")
-    public void a_gear_tile() {
+
+
+
+    @When("a gear right tile")
+    public void a_gear_right_tile() {
 	Board brd = game.getBoard();
 	Tile tile = new Tile(2);
-	Obstacle obstacle = new Obstacle("Gear");
-	
-	tile.setObstacle(obstacle); tile.setType(TyleType.Gear);
+	Obstacle obstacle = new Obstacle("GearR");
+
+	tile.setObstacle(obstacle); tile.setType(TyleType.GearR);
 	brd.setTile(1,0,tile);
-        game.setBoard(brd);
+	game.setBoard(brd);
     }
-    
-    @When("a conveyor tile")
-    public void a_conveyor_tile() {
+
+    @When("a gear left tile")
+    public void a_gear_left_tile() {
 	Board brd = game.getBoard();
 	Tile tile = new Tile(2);
-	Obstacle obstacle = new Obstacle("Conveyor");
-	
-	tile.setObstacle(obstacle); tile.setType(TyleType.Conveyor);
-	brd.setTile(1,0,tile);
-        game.setBoard(brd);
+	Obstacle obstacle = new Obstacle("GearL");
+
+	tile.setObstacle(obstacle); tile.setType(TyleType.GearL);
+	brd.setTile(8,0,tile);
+	game.setBoard(brd);
     }
     
+    @When("a conveyor1 tile")
+    public void a_conveyor1_tile() {
+	Board brd = game.getBoard();
+	Tile tile = new Tile(2);
+	Obstacle obstacle = new Obstacle("Conveyor1");
+
+	tile.setObstacle(obstacle); tile.setType(TyleType.Conveyor1);
+	brd.setTile(1,0,tile);
+	game.setBoard(brd);
+    }
+
+    @When("a conveyor2 tile")
+    public void a_conveyor2_tile() {
+	Board brd = game.getBoard();
+	Tile tile = new Tile(2);
+	Obstacle obstacle = new Obstacle("Conveyor2");
+
+	tile.setObstacle(obstacle); tile.setType(TyleType.Conveyor2);
+	brd.setTile(1,0,tile);
+	game.setBoard(brd);
+    }
+    
+    @When("a conveyor3 tile")
+    public void a_conveyor3_tile() {
+	Board brd = game.getBoard();
+	Tile tile = new Tile(2);
+	Obstacle obstacle = new Obstacle("Conveyor3");
+
+	tile.setObstacle(obstacle); tile.setType(TyleType.Conveyor3);
+	brd.setTile(1,0,tile);
+	game.setBoard(brd);
+    }
+
+
     @When("an acid tile")
     public void an_acid_tile() {
 	Board brd = game.getBoard();
 	Tile tile = new Tile(2);
 	Obstacle obstacle = new Obstacle("Acid");
-	
+
 	tile.setObstacle(obstacle); tile.setType(TyleType.Acid);
 	brd.setTile(1,0,tile);
-        game.setBoard(brd);
+	game.setBoard(brd);
     }
 
     @Then("obstacles are generated on tiles")
@@ -140,34 +176,51 @@ public class obstacleTest {
 	    }
 	}
     }
-    
+
     @Then("robot should not move into the barrel")
     public void robot_should_not_move_into_the_barrel() {
-        assertArrayEquals(game.getRobots().get(0).getCoordinate(),new int[] {0,0});
+	assertArrayEquals(game.getRobots().get(0).getCoordinate(),new int[] {0,0});
     }
-    
+
     @Then("robot should die")
     public void robot_should_die() {
 	assertFalse(robot.equals(game.getRobots().get(0)));
     }
-    
+
     @Then("robots life should go up")
     public void robots_life_should_go_up() {
-        assertTrue(3 < game.getRobots().get(0).getLives());
+	assertTrue(3 < game.getRobots().get(0).getLives());
+    }
+
+    @Then("robot turns right")
+    public void robot_turns_right() {
+	assertTrue(game.getRobots().get(0).getDir() != 1);
+    }
+    @Then("robot turns left")
+    public void robot_turns_left() {
+	assertTrue(true);
+    }
+
+    @Then("robot moves1")
+    public void robot_moves1() {
+	assertTrue(0 <= game.getRobots().get(0).getCoordinate()[0]);
+
     }
     
-    @Then("robot turns")
-    public void turns() {
-        assertTrue(game.getRobots().get(0).getDir() != 1);
+    @Then("robot moves2")
+    public void robot_moves2() {
+	assertTrue(0 <= game.getRobots().get(0).getCoordinate()[0]);
+
     }
-    
-    @Then("robot moves")
-    public void robot_moves() {
-        assertTrue(3 < game.getRobots().get(0).getCoordinate()[0] || 0 < game.getRobots().get(0).getCoordinate()[1]);
+
+    @Then("robot moves3")
+    public void robot_moves3() {
+	assertTrue(0 <= game.getRobots().get(0).getCoordinate()[0]);
+
     }
-    
+
     @Then("robot stops moving")
     public void robot_stops_moving() {
-        assertArrayEquals(game.getRobots().get(0).getCoordinate(), new int[] {1,0});
+	assertArrayEquals(game.getRobots().get(0).getCoordinate(), new int[] {1,0});
     }
 }

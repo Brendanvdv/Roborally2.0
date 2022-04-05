@@ -59,4 +59,5 @@ public class Robot {
 	    dead = true;
 	}
     }
+
 }

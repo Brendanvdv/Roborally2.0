@@ -1,7 +1,13 @@
 package rebuild;
 
+import java.awt.Dimension;
+import java.awt.GridLayout;
 
-public class Board {
+import javax.swing.JPanel;
+
+public class Board extends JPanel{
+    private static final long serialVersionUID = 7191647105083232216L;
+    
     private Tile[][] board;
     private int diff;
     
@@ -9,6 +15,12 @@ public class Board {
 	board = new Tile[length][width];
 	diff = difficulty;
 	init();
+	
+	setLayout(new GridLayout(length, width));
+	
+	setMinimumSize(new Dimension(length * Tile.PIXEL_SIZE, width * Tile.PIXEL_SIZE));
+	setMaximumSize(getMinimumSize());
+	setPreferredSize(getMinimumSize());
     }
     
     public void init() {
@@ -19,6 +31,12 @@ public class Board {
 	}
 	
 	spawnCheckpoint();
+	
+	for(Tile[] column : board) {
+	    for(Tile row :  column) {
+		add(row);
+	    }
+	}
     }
     
     public void spawnCheckpoint() {
