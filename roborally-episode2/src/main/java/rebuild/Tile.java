@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -19,25 +20,42 @@ public class Tile extends JPanel{
 
     private TyleType type;
     private int diff;
+    private boolean containsRobot = false;
     private Obstacle obstacle;
     private BufferedImage image;
+    private BufferedImage imageRobot;
+    private int direction = 0;
 
     public Tile(int difficulty) {
 	diff = difficulty;
 	init();
-	String path = this.type.getPictureFile();
-	    File file = new File(path);
 
-//	try {
-//	    this.image = ImageIO.read(file);
-//	} catch (IOException e) {
-//	    this.image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
-//	}
+//	assignImage();
 	
+
 	setMinimumSize(new Dimension(PIXEL_SIZE, PIXEL_SIZE));
 	setMaximumSize(getMinimumSize());
 	setPreferredSize(getMinimumSize());
     }
+
+//    private void assignImage() {
+//	String path = this.type.getPictureFile();
+//	File file = new File(path);
+//	
+//	String pathR = "src/test/resources/images/acid.png";
+//	File fileR = new File(pathR);
+//	    
+//	    
+//
+//	try {
+//	    this.image = ImageIO.read(file);
+//	    this.imageRobot = ImageIO.read(fileR);
+//	} catch (IOException e) {
+//	    this.image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
+//	    this.imageRobot = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
+//	    
+//	}
+//    }
 
     public void init() {
 	double val = Math.random();
@@ -87,6 +105,7 @@ public class Tile extends JPanel{
 
     public void setType(TyleType tileType) {
 	type = tileType;
+//	assignImage();
     }
 
     public boolean validObstacle() {
@@ -104,7 +123,7 @@ public class Tile extends JPanel{
     public void setObstacle(Obstacle obs) {
 	obstacle = obs;
     }
-    
+
 //    @Override
 //    public void paint(Graphics g) {
 //	super.paintComponent(g);
@@ -112,5 +131,20 @@ public class Tile extends JPanel{
 //
 //	g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 //	g2d.drawImage(image, 0, 0, null);
+//	
+//	if (containsRobot) {
+//	    AffineTransform old2 = g2d.getTransform();
+//	    g2d.rotate(Math.toRadians((direction+1)*90), 32, 32);
+//	    g2d.drawImage(imageRobot, 0, 0, null);
+//	    g2d.setTransform(old2);
+//	}
 //    }
+    
+    public void placeRobot(boolean bool) {
+	containsRobot = bool;
+    }
+
+    public boolean hasRobot() {
+	return containsRobot;
+    }
 }

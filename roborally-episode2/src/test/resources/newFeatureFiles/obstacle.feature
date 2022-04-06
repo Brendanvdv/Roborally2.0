@@ -23,7 +23,7 @@ Feature: everything obstacle related
 		When game started
 		And a pit tile
 		And turn started
-		And players chose their cards
+		And player chose his cards
 		And cards are being executed
 		Then robot should die
 	
@@ -32,7 +32,7 @@ Feature: everything obstacle related
 		When game started
 		And a health tile
 		And turn started
-		And players chose their cards
+		And player chose his cards
 		And cards are being executed
 		Then robots life should go up
 		
@@ -41,7 +41,7 @@ Feature: everything obstacle related
 		When game started
 		And a gear right tile
 		And turn started
-		And players chose their cards
+		And player chose his cards
 		And cards are being executed
 		Then robot turns right
 		
@@ -50,7 +50,7 @@ Feature: everything obstacle related
 		When game started
 		And a gear left tile
 		And turn started
-		And players chose their cards
+		And player chose his cards
 		And cards are being executed
 		Then robot turns left
 		
@@ -59,7 +59,7 @@ Feature: everything obstacle related
 		When game started
 		And a conveyor1 tile
 		And turn started
-		And players chose their cards
+		And player chose his cards
 		And cards are being executed
 		Then robot moves1
 		
@@ -68,7 +68,7 @@ Feature: everything obstacle related
 		When game started
 		And a conveyor2 tile
 		And turn started
-		And players chose their cards
+		And player chose his cards
 		And cards are being executed
 		Then robot moves2
 		
@@ -77,7 +77,7 @@ Feature: everything obstacle related
 		When game started
 		And a conveyor3 tile
 		And turn started
-		And players chose their cards
+		And player chose his cards
 		And cards are being executed
 		Then robot moves3
 
@@ -86,6 +86,6 @@ Feature: everything obstacle related
 		When game started
 		And an acid tile
 		And turn started
-		And players chose their cards
+		And player chose his cards
 		And cards are being executed
 		Then robot stops moving

@@ -56,12 +56,17 @@ public class Player {
 	robot = r;
     }
 
-    public void execHand(int j) {
-	execCard(hand.get(j));
+    public Board execHand(int j) {
 	robot.checkDead();
+	
+	board.getTile(robot.getCoordinate()).placeRobot(false);
+	
+	board.getTile(execCard(hand.get(j))).placeRobot(true);;
+	
+	return board;
     }
 
-    public void execCard(ActionCard actionCard) {
+    public int[] execCard(ActionCard actionCard) {
 	setMoved(true);
 	
 	if(!stopTurn) {
@@ -75,6 +80,8 @@ public class Player {
 		}
 	    }
 	}
+	
+	return robot.getCoordinate();
 
     }
 

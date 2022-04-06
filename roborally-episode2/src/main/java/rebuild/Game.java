@@ -23,6 +23,7 @@ public class Game {
 	board = new Board(boardDim[0],boardDim[1],diff);
 	makePlayers();
 	spawnRobots();
+	board.repaint();
     }
 
     private void spawnRobots() {
@@ -45,6 +46,8 @@ public class Game {
 
 	for (int i = 0; i < players.size(); i++) {
 	    board.putRobotOn(getRobots().get(i).getCoordinate());
+	    board.getTile(getRobots().get(i).getCoordinate()).placeRobot(true);
+	    board.getTile(getRobots().get(i).getCoordinate()).repaint();
 	}
 
 
@@ -100,7 +103,7 @@ public class Game {
 	for(int i = 0; i < 4; i++) {
 	    for(Player player : players) {
 		player.setBoard(board);
-		player.execHand(i);
+		setBoard(player.execHand(i));
 	    }	   
 	}
 	
@@ -120,7 +123,7 @@ public class Game {
     public void play(JFrame f) {
 	f.add(board);
 	f.setSize(700,700);
-//	f.setVisible(true);
-//	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	f.setVisible(true);
+	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

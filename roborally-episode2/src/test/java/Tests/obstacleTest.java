@@ -55,6 +55,20 @@ public class obstacleTest {
 	    player.setHand(hand);
 	}
     }
+    
+    @When("player chose his cards")
+    public void player_chose_his_cards() {
+	for(Player player : game.getPlayers()) {
+	    ArrayList<ActionCard> hand = new ArrayList<ActionCard>();
+
+	    hand.add(new ActionCard(CardType.Move1));
+	    hand.add(new ActionCard(CardType.TurnR));
+	    hand.add(new ActionCard(CardType.TurnR));
+	    hand.add(new ActionCard(CardType.TurnR));
+
+	    player.setHand(hand);
+	}
+    }
 
     @When("cards are being executed")
     public void cards_are_being_executed() {
@@ -194,7 +208,7 @@ public class obstacleTest {
 
     @Then("robot turns right")
     public void robot_turns_right() {
-	assertTrue(game.getRobots().get(0).getDir() != 1);
+	assertTrue(game.getRobots().get(0).getDir() == 1);
     }
     @Then("robot turns left")
     public void robot_turns_left() {
@@ -204,19 +218,16 @@ public class obstacleTest {
     @Then("robot moves1")
     public void robot_moves1() {
 	assertTrue(0 <= game.getRobots().get(0).getCoordinate()[0]);
-
     }
     
     @Then("robot moves2")
     public void robot_moves2() {
 	assertTrue(0 <= game.getRobots().get(0).getCoordinate()[0]);
-
     }
 
     @Then("robot moves3")
     public void robot_moves3() {
 	assertTrue(0 <= game.getRobots().get(0).getCoordinate()[0]);
-
     }
 
     @Then("robot stops moving")
