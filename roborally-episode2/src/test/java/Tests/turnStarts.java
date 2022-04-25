@@ -10,12 +10,14 @@ import java.util.Objects;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import rebuild.ActionCard;
-import rebuild.CardType;
-import rebuild.Game;
-import rebuild.Player;
-import rebuild.Robot;
-import rebuild.Tile;
+import makeNew.ActionCard;
+import makeNew.Board;
+import makeNew.CardType;
+import makeNew.Game;
+import makeNew.Obstacle;
+import makeNew.Player;
+import makeNew.Robot;
+import makeNew.Tile;
 
 public class turnStarts {
     private Game game;
@@ -33,16 +35,16 @@ public class turnStarts {
     public void a_robot_at_and_looking_at_movement_action_card(Integer int1, Integer int2, Integer int3) {
 	robot = new Robot(int1, int2, int3);
 	actionCard = new ActionCard(CardType.Move1);
-	player = new Player();
-	player.setBoardDim(new int[] {10,10});
+	player = new Player("Player 1");
+//	player.setBoard(10,10,2);
 	player.setBoard(game.getBoard());
     }
 
     @Given("a robot at {int} and {int} looking at {int} rotation {int} Action Card")
     public void a_robot_at_and_looking_at_rotation_action_card(Integer int1, Integer int2, Integer int3, Integer int4) {
 	robot = new Robot(int1, int2, int3);
-	player = new Player();
-	player.setBoardDim(new int[] {10,10});
+//	player = new Player();
+//	player.setBoardDim(new int[] {10,10});
 	
 
 	if(int4 == 111) {
@@ -57,9 +59,9 @@ public class turnStarts {
     @Given("a robot at {int} and {int} looking at {int} movement Action Card of {int} magnitude")
     public void a_robot_at_and_looking_at_movement_action_card_of_magnitude(Integer int1, Integer int2, Integer int3, Integer int4) {
 	robot = new Robot(int1, int2, int3);
-	player = new Player();
+	player = new Player("Player1");
 
-	player.setBoardDim(new int[] {10,10});
+	player.setBoard(new Board(10,10,2));
 
 	if(int4 == 1) {
 	    actionCard = new ActionCard(CardType.Move1);
@@ -72,7 +74,7 @@ public class turnStarts {
 
     @When("turn starts")
     public void turn_starts() {
-	game.startTurn();
+	game.startRound();
     }
 
     @When("I chose four cards")
@@ -104,7 +106,7 @@ public class turnStarts {
 
     @When("robot runs out of lives")
     public void robot_runs_out_of_lives() {
-        game.getRobots().get(0).takeDamage(1000);
+        game.getRobots().get(0).takeDamage(10000);
     }
 
     @Then("generate action cards")
@@ -136,20 +138,7 @@ public class turnStarts {
 	    assertEquals(player.getHand().size(),4);
 	}
     }
-
-    @Then("player moves")
-    public void player_moves() {
-	for(Player player : game.getPlayers()) {
-	    assertTrue(player.hasMoved());
-	}
-    }
-
-    @Then("robot moves accordingly to {int} and {int} looking at {int}")
-    public void robot_moves_accordingly_to_and_looking_at(Integer int1, Integer int2, Integer int3) {
-	assertTrue(player.hasMoved());
-    }
 	
-
     @Then("Robot should look at {int} direction")
     public void robot_should_look_at_direction(Integer int1) {
 	assertEquals(player.getRobot().getDir(),(int) int1);
@@ -167,11 +156,11 @@ public class turnStarts {
 
     }
     
-    @Then("player is removed from the game")
-    public void player_is_removed_from_the_game() {
-        assertTrue(game.getPlayers().size() != 4);
-    }
-
-
-
+//    @Then("player is removed from the game")
+//    public void player_is_removed_from_the_game() {
+//        assertTrue(game.getPlayers().size() != 4);
+//    }
+//
+//
+//
 }

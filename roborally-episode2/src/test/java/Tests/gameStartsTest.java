@@ -1,17 +1,17 @@
 package Tests;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import rebuild.Board;
-import rebuild.Game;
-import rebuild.Robot;
-import rebuild.Tile;
-import rebuild.TyleType;
+import makeNew.Board;
+import makeNew.Game;
+import makeNew.Player;
+import makeNew.Robot;
+import makeNew.Tile;
+import makeNew.TyleType;
 
 public class gameStartsTest {
     private Game game;
@@ -31,7 +31,8 @@ public class gameStartsTest {
     }
     @Then("make a board of {int} x {int} with {int} robots on it")
     public void make_a_board_of_x_with_robots_on_it(Integer int1, Integer int2, Integer int3) {
-	assertArrayEquals(game.getBoardDim(), new int[] {int1,int2});
+	assertEquals(game.getBoard().getCols(), (int) int1);
+	assertEquals(game.getBoard().getRows(), (int) int2);
 	assertEquals(game.getRobots().size(), (int) int3);
     }
 
@@ -105,8 +106,8 @@ public class gameStartsTest {
     
     @Then("that there are no obstacles where the robots are at")
     public void that_there_are_no_obstacles_where_the_robots_are_at() {
-	for (int i = 0; i < game.getRobots().size(); i++) {
-	    assertTrue(game.getBoard().getTile(game.getRobots().get(i).getCoordinate()).getType().equals(TyleType.Floor));
+	for(Player player : game.getPlayers()) {
+	    assertTrue(game.getBoard().getTile(player.getRobot().getCoor()).getType().equals(TyleType.Floor));
 	}
     }
 

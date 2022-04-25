@@ -42,10 +42,6 @@ public class Robot {
 	lives = lives - obstacle.getDamage();
     }
     
-    public void takeDamage(int damage) {
-	lives = lives - damage;
-    }
-    
     public int getLives() {
 	return lives;
     }

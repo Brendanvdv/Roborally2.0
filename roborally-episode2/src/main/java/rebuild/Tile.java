@@ -30,7 +30,7 @@ public class Tile extends JPanel{
 	diff = difficulty;
 	init();
 
-//	assignImage();
+	assignImage();
 	
 
 	setMinimumSize(new Dimension(PIXEL_SIZE, PIXEL_SIZE));
@@ -38,24 +38,24 @@ public class Tile extends JPanel{
 	setPreferredSize(getMinimumSize());
     }
 
-//    private void assignImage() {
-//	String path = this.type.getPictureFile();
-//	File file = new File(path);
-//	
-//	String pathR = "src/test/resources/images/acid.png";
-//	File fileR = new File(pathR);
-//	    
-//	    
-//
-//	try {
-//	    this.image = ImageIO.read(file);
-//	    this.imageRobot = ImageIO.read(fileR);
-//	} catch (IOException e) {
-//	    this.image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
-//	    this.imageRobot = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
-//	    
-//	}
-//    }
+    private void assignImage() {
+	String path = this.type.getPictureFile();
+	File file = new File(path);
+	
+	String pathR = "src/test/resources/images/acid.png";
+	File fileR = new File(pathR);
+	    
+	    
+
+	try {
+	    this.image = ImageIO.read(file);
+	    this.imageRobot = ImageIO.read(fileR);
+	} catch (IOException e) {
+	    this.image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
+	    this.imageRobot = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
+	    
+	}
+    }
 
     public void init() {
 	double val = Math.random();
@@ -105,7 +105,7 @@ public class Tile extends JPanel{
 
     public void setType(TyleType tileType) {
 	type = tileType;
-//	assignImage();
+	assignImage();
     }
 
     public boolean validObstacle() {
@@ -124,21 +124,21 @@ public class Tile extends JPanel{
 	obstacle = obs;
     }
 
-//    @Override
-//    public void paint(Graphics g) {
-//	super.paintComponent(g);
-//	Graphics2D g2d = (Graphics2D) g;
-//
-//	g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//	g2d.drawImage(image, 0, 0, null);
-//	
-//	if (containsRobot) {
-//	    AffineTransform old2 = g2d.getTransform();
-//	    g2d.rotate(Math.toRadians((direction+1)*90), 32, 32);
-//	    g2d.drawImage(imageRobot, 0, 0, null);
-//	    g2d.setTransform(old2);
-//	}
-//    }
+    @Override
+    public void paint(Graphics g) {
+	super.paintComponent(g);
+	Graphics2D g2d = (Graphics2D) g;
+
+	g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+	g2d.drawImage(image, 0, 0, null);
+	
+	if (containsRobot) {
+	    AffineTransform old2 = g2d.getTransform();
+	    g2d.rotate(Math.toRadians((direction+1)*90), 32, 32);
+	    g2d.drawImage(imageRobot, 0, 0, null);
+	    g2d.setTransform(old2);
+	}
+    }
     
     public void placeRobot(boolean bool) {
 	containsRobot = bool;

@@ -49,8 +49,6 @@ public class Game {
 	    board.getTile(getRobots().get(i).getCoordinate()).placeRobot(true);
 	    board.getTile(getRobots().get(i).getCoordinate()).repaint();
 	}
-
-
     }
 
     private void makePlayers() {

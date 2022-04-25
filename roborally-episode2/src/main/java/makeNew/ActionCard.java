@@ -1,15 +1,16 @@
-package rebuild;
+package makeNew;
 
 public class ActionCard {
+
     private CardType type;
     private int magnitude;
-    private boolean movement = false;
-    
+    private boolean movement;
+
     public ActionCard() {
 	init();
 	cardModifiers();
     }
-    
+
     public ActionCard(CardType cardType) {
 	type = cardType;
 	cardModifiers();
@@ -17,7 +18,7 @@ public class ActionCard {
 
     private void init() {
 	double val = Math.random();
-	
+
 	if(val < 0.225) {
 	    setCardType(CardType.Move1);
 	} else if(val < 0.425) {
@@ -32,7 +33,7 @@ public class ActionCard {
 	    type = CardType.UTurn;
 	}
     }
-    
+
     public void cardModifiers() {
 	if(type.equals(CardType.Move1)) {
 	    movement = true;
@@ -45,11 +46,7 @@ public class ActionCard {
 	    magnitude = 3;
 	} 
     }
-
-    public CardType getCardType() {
-	return type;
-    }
-
+    
     public void setCardType(CardType type) {
 	this.type = type;
     }
@@ -57,9 +54,13 @@ public class ActionCard {
     public boolean isMovement() {
 	return movement;
     }
-    
+
     public int getMagnitude() {
 	return magnitude;
+    }
+
+    public CardType getCardType() {
+	return type;
     }
 
 }

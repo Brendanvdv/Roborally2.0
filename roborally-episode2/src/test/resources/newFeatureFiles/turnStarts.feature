@@ -14,13 +14,7 @@ Feature: Turn starts
 		And I chose four cards
 		Then I want to have four action cards in my hand
 		
-	Scenario: exectuing moves
-		Given Game started
-		When turn starts
-		And I chose four cards
-		And the game executes the moves
-		Then player moves
-		
+
 	Scenario: checking if the move is valid 
 		Given a robot at <x> and <y> looking at <dir> movement Action Card of <mag> magnitude
 		When check card
@@ -41,18 +35,6 @@ Feature: Turn starts
 		| 2 | 2 |  3  |  3  |  0     |
 		| 2 | 2 |  0  |  3  |  0     |
 		
-	Scenario: executing movement action card
-		Given Game started
-		And a robot at <x> and <y> looking at <dir> movement Action Card
-		When executing a card
-		Then robot moves accordingly to <newx> and <newy> looking at <dir>
-		
-		Examples:
-		| x | y | dir | newx | newy |
-		| 5 | 5 |  1  |  6   |  5   |
-		| 5 | 5 |  2  |  5   |  6   |
-		| 5 | 5 |  3  |  4   |  5   |
-		| 5 | 5 |  0  |  5   |  4   |
 		
 	Scenario: executing rotation action card
 		Given a robot at 5 and 5 looking at <dir> rotation <rot> Action Card
@@ -64,11 +46,11 @@ Feature: Turn starts
 		|  1  |   0  | 111 | #left
 		|  1  |   2  | 222 | #right
 		|  1  |   3  | 333 | #uTurn
-		
-	Scenario: player dies
-		Given Game started
-		When turn starts
-		And I chose four cards
-		And robot runs out of lives
-		And the game executes the moves
-		Then player is removed from the game
+#		
+#	Scenario: player dies
+#		Given Game started
+#		When turn starts
+#		And I chose four cards
+#		And robot runs out of lives
+#		And the game executes the moves
+#		Then player is removed from the game
