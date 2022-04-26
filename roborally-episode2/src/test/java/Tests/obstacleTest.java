@@ -13,7 +13,7 @@ import io.cucumber.java.en.When;
 import rebuild.ActionCard;
 import rebuild.Board;
 import rebuild.CardType;
-import rebuild.Game;
+import rebuild.GameInstance;
 import rebuild.Player;
 import rebuild.Robot;
 import rebuild.Tile;
@@ -25,7 +25,7 @@ public class obstacleTest {
     private int width;
     private int playerAmount;
     private int difficulty;
-    private Game game;
+    private GameInstance game;
     private Robot robot;
 
 
@@ -36,7 +36,7 @@ public class obstacleTest {
 
     @When("game started")
     public void game_starts() {
-	game = new Game(length,width,playerAmount,difficulty);
+	game = new GameInstance(length,width,playerAmount,difficulty);
     }
 
     @When("turn started")

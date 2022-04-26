@@ -12,13 +12,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import rebuild.ActionCard;
 import rebuild.CardType;
-import rebuild.Game;
+import rebuild.GameInstance;
 import rebuild.Player;
 import rebuild.Robot;
 import rebuild.Tile;
 
 public class turnStarts {
-    private Game game;
+    private GameInstance game;
     private Player player;
     private ActionCard actionCard;
     private Robot robot;
@@ -26,7 +26,7 @@ public class turnStarts {
 
     @Given("Game started")
     public void game_started() {
-	game = new Game(10,10,4,2);
+	game = new GameInstance(10,10,4,2);
     }
 
     @Given("a robot at {int} and {int} looking at {int} movement Action Card")

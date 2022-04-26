@@ -8,13 +8,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import rebuild.Board;
-import rebuild.Game;
+import rebuild.GameInstance;
 import rebuild.Robot;
 import rebuild.Tile;
 import rebuild.TyleType;
 
 public class gameStartsTest {
-    private Game game;
+    private GameInstance game;
     private Board board;
     private int length;
     private int width;
@@ -27,7 +27,7 @@ public class gameStartsTest {
     }
     @When("Game starts")
     public void game_starts() {
-	game = new Game(length,width,playerAmount,diff);
+	game = new GameInstance(length,width,playerAmount,diff);
     }
     @Then("make a board of {int} x {int} with {int} robots on it")
     public void make_a_board_of_x_with_robots_on_it(Integer int1, Integer int2, Integer int3) {

@@ -5,6 +5,10 @@ import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
+// Responsibility: tile placement and generation
+// No need for extension
+// SOLID fulfilled
+
 public class Board extends JPanel{
     private static final long serialVersionUID = 7191647105083232216L;
     
@@ -12,31 +16,32 @@ public class Board extends JPanel{
     private int diff;
     
     public Board(int length,int width, int difficulty) {
-	board = new Tile[length][width];
-	diff = difficulty;
-	init();
+    	board = new Tile[length][width];
+    	diff = difficulty;
+    	init();
 	
-	setLayout(new GridLayout(length, width));
-	
-	setMinimumSize(new Dimension(length * Tile.PIXEL_SIZE, width * Tile.PIXEL_SIZE));
-	setMaximumSize(getMinimumSize());
-	setPreferredSize(getMinimumSize());
+    	// GUI here should go to it's own class
+    	setLayout(new GridLayout(length, width));
+		
+		setMinimumSize(new Dimension(length * Tile.PIXEL_SIZE, width * Tile.PIXEL_SIZE));
+		setMaximumSize(getMinimumSize());
+		setPreferredSize(getMinimumSize());
     }
     
     public void init() {
-	for(int i = 0; i < board.length; i++) {
-	    for(int j = 0; j < board[0].length; j++) {
-		board[i][j] = new Tile(diff);
-	    }
-	}
+    	for(int i = 0; i < board.length; i++) {
+    		for(int j = 0; j < board[0].length; j++) {
+    			board[i][j] = new Tile(diff);
+    		}
+    	}
 	
-	spawnCheckpoint();
+    	spawnCheckpoint();
 	
-	for(Tile[] column : board) {
-	    for(Tile row :  column) {
-		add(row);
-	    }
-	}
+    	for(Tile[] column : board) {
+    		for(Tile row :  column) {
+    			add(row);
+    		}
+    	}
     }
     
     public void spawnCheckpoint() {

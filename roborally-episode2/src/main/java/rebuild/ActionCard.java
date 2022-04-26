@@ -1,22 +1,28 @@
 package rebuild;
 
+// Responsibility: Produce cards and card specific variables
+// Not open for extension yet
+
+
 public class ActionCard {
     private CardType type;
     private int magnitude;
     private boolean movement = false;
     
     ActionCard() {
-	init();
-	cardModifiers();
+    	init();
+    	cardModifiers();
     }
     
     public ActionCard(CardType cardType) {
-	type = cardType;
-	cardModifiers();
+    	type = cardType;
+    	cardModifiers();
     }
 
+// Consider independent class for Card Factory
+    
     private void init() {
-	double val = Math.random();
+    	double val = Math.random();
 	
 	if(val < 0.225) {
 	    setCardType(CardType.Move1);
@@ -33,17 +39,21 @@ public class ActionCard {
 	}
     }
     
+// Consider different class for movement specific cards
+    
     public void cardModifiers() {
-	if(type.equals(CardType.Move1)) {
-	    movement = true;
-	    magnitude = 1;
-	} else if(type.equals(CardType.Move2)) {
-	    movement = true;
-	    magnitude = 2;
-	} else if(type.equals(CardType.Move3)) {
-	    movement = true;
-	    magnitude = 3;
-	} 
+    	if(type.equals(CardType.Move1)) {
+    		movement = true;
+    		magnitude = 1;
+    	} 
+    	else if(type.equals(CardType.Move2)) {
+    		movement = true;
+    		magnitude = 2;
+    	} 
+    	else if(type.equals(CardType.Move3)) {
+    		movement = true;
+    		magnitude = 3;
+    	} 
     }
 
     public CardType getCardType() {

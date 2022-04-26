@@ -1,5 +1,9 @@
 package rebuild;
 
+// Responsibility: to store card types as enums
+// Open for extension
+// LID irrelevant
+
 public enum CardType {
     Move1,
     Move2,
