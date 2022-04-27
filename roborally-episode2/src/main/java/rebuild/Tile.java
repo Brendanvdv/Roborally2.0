@@ -3,69 +3,79 @@ package rebuild;
 import java.util.Objects;
 
 public class Tile {
-    private TyleType type;
-    private int diff;
+    
     private Obstacle obstacle;
+    private TyleType type;
+
+    private boolean containsRobot;
+
+    public Tile(TyleType tileType) {
+	type = tileType;
+	generateObstacle();
+    }
 
     public Tile(int difficulty) {
-	diff = difficulty;
-	init();
+	init(difficulty);
+	generateObstacle();
     }
-    
-    public void init() {
+
+    private void generateObstacle() {
+	obstacle = new Obstacle(type);
+    }
+
+    public void setContainsRobot(boolean b) {
+	containsRobot = b;
+    }
+
+    public void init(int diff) {
 	double val = Math.random();
 	double x = 0.65 - diff*0.1;
-	double y = (1 - x)/7;
+	double y = (1 - x)/11;
 
 
 	if(val < x) {
 	    type = TyleType.Floor;
-	    obstacle = new Obstacle("Floor");
 	} else if(val < x+y) {
 	    type = TyleType.Pit;
-	    obstacle = new Obstacle("Pit");
-	} else if(val < x+2*y) {
-	    type = TyleType.Barrel;
-	    obstacle = new Obstacle("Barrel");
 	} else if(val < x+3*y) {
+	    type = TyleType.Barrel;
+	} else if(val < x+3.5*y) {
 	    type = TyleType.Laser;
-	    obstacle = new Obstacle("Laser");
-	} else if(val < x+4*y) {
-	    type = TyleType.Acid;
-	    obstacle = new Obstacle("Acid");
 	} else if(val < x+5*y) {
-	    type = TyleType.Health;
-	    obstacle = new Obstacle("Health");
+	    type = TyleType.Acid;
 	} else if(val < x+6*y) {
-	    type = TyleType.Conveyor;
-	    obstacle = new Obstacle("Conveyor");
+	    type = TyleType.Health;
+	} else if(val < x+7*y) {
+	    type = TyleType.Conveyor1;
+	} else if(val < x+8*y) {
+	    type = TyleType.Conveyor2;
+	} else if(val < x+9*y) {
+	    type = TyleType.Conveyor3;
+	} else if(val < x+10*y) {
+	    type = TyleType.GearL;
 	} else {
-	    type = TyleType.Gear;
-	    obstacle = new Obstacle("Gear");
+	    type = TyleType.GearR;
 	}
-    }
-
-    public TyleType getType() {
-	return type;
-    }
-    
-    public void setType(TyleType tileType) {
-	type = tileType;
-    }
-    
-    public boolean validObstacle() {
-	if(!Objects.isNull(obstacle)) {
-	    return true;
-	}
-	
-	return false;
     }
 
     public Obstacle getObstacle() {
 	return obstacle;
     }
-    
-    public void setObstacle(Obstacle obs) {
-	obstacle = obs;
+
+    public boolean validObstacle() {
+	return !Objects.isNull(obstacle);
     }
+
+    public TyleType getType() {
+	return type;
+    }
+
+    public void setObstacle(Obstacle obstacle2) {
+	obstacle = obstacle2;
+    }
+
+    public void setType(TyleType tp) {
+	type = tp;
+    }
+
 }

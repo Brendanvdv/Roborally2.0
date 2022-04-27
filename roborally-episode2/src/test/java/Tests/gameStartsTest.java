@@ -8,12 +8,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import rebuild.Board;
-import rebuild.Game;
+import rebuild.GameInstance;
+import rebuild.Robot;
 import rebuild.Tile;
 import rebuild.TyleType;
 
 public class gameStartsTest {
-    private Game game;
+    private GameInstance game;
     private Board board;
     private int length;
     private int width;
@@ -26,20 +27,18 @@ public class gameStartsTest {
     }
     @When("Game starts")
     public void game_starts() {
-	game = new Game(length,width,playerAmount,diff);
+	game = new GameInstance(length,width,playerAmount,diff);
     }
     @Then("make a board of {int} x {int} with {int} robots on it")
     public void make_a_board_of_x_with_robots_on_it(Integer int1, Integer int2, Integer int3) {
-	assertArrayEquals(game.getBoardDim(), new int[] {int1,int2});
-	assertEquals(game.getRobots().size(),int3.intValue());
+	assertArrayEquals(game.askMaster().getBoardDim(), new int[] {int1,int2});
+	assertEquals(game.getRobots().size(), (int) int3);
     }
-
-
 
     @Then("robots are spawned in the corners")
     public void robots_are_spawned_in_the_corners() {
-	for (int i = 0; i < game.getRobots().size(); i++) {
-	    assertTrue(game.getRobots().get(i).isInCorner());
+	for (Robot robot : game.getRobots()) {
+	    assertTrue(robot.isInCorner());
 	}
     }
 
@@ -50,7 +49,7 @@ public class gameStartsTest {
 
     @Then("I want the board to be random tiles")
     public void i_want_the_board_to_be_random_tiles() {
-	for (Tile[] column : game.getBoard().getTiles()) {
+	for (Tile[] column : game.askMaster().getBoard().getTiles()) {
 	    for(Tile row : column) {
 		assertTrue(row instanceof Tile);
 	    }
@@ -59,7 +58,7 @@ public class gameStartsTest {
     
     @Then("spawn obstacles on the board")
     public void spawn_obstacles_on_the_board() {
-	for(Tile[] column : game.getBoard().getTiles()) {
+	for(Tile[] column : game.askMaster().getBoard().getTiles()) {
 	    for(Tile row : column) {
 		assertTrue(row.validObstacle());
 	    }
@@ -93,7 +92,7 @@ public class gameStartsTest {
     public void there_should_be_a_checkpoint_in_the_center() {
 	boolean hasCheckpoint = false;
 	
-	for (Tile[] column : game.getBoard().getTiles()) {
+	for (Tile[] column : game.askMaster().getBoard().getTiles()) {
 	    for(Tile row : column) {
 		if(row.getType().equals(TyleType.Checkpoint)) {
 		    hasCheckpoint = true;
@@ -107,7 +106,7 @@ public class gameStartsTest {
     @Then("that there are no obstacles where the robots are at")
     public void that_there_are_no_obstacles_where_the_robots_are_at() {
 	for (int i = 0; i < game.getRobots().size(); i++) {
-	    assertTrue(game.getBoard().getTile(game.getRobots().get(i).getCoordinate()).getType().equals(TyleType.Floor));
+	    assertTrue(game.askMaster().getBoard().getTile(game.getRobots().get(i).getCoor()).getType().equals(TyleType.Floor));
 	}
     }
 
