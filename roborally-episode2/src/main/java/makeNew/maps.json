@@ -13,7 +13,7 @@
  	],
  	
  	"medium" : [
-		 	["Laser","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Laser"], // Dimensions
+		 	["Laser","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Laser"], 
 			["Tile" ,"ConveyorE","ConveyorS","Tile" ,"Tile" ,"Tile" ,"Barrel","Acid","Tile" ,"Acid","Barrel","Tile" ,"Tile" ,"Tile" ,"ConveyorS","ConveyorW","Tile"],
 			["Tile" ,"Tile" ,"ConveyorE","ConveyorE","Health","Tile" ,"Barrel","GearR","GearR","GearR","Barrel","Tile" ,"Health","ConveyorW","ConveyorW","Tile" ,"Tile"],
 			["Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Barrel","Acid","Acid","Acid","Barrel","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile"],
@@ -32,7 +32,7 @@
 		 	],
 		 	
 	"hard": [
-		 	["Tile","Laser","Tile","Tile","Barrel","Tile","Laser","Barrel","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile", "Barrel","Laser","Tile","Barrel","Tile","Tile","Laser","Tile"], // Dimensions
+		 	["Tile","Laser","Tile","Tile","Barrel","Tile","Laser","Barrel","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile", "Barrel","Laser","Tile","Barrel","Tile","Tile","Laser","Tile"], 
 		 	["Laser","Laser","Tile","Tile","Acid","Tile","Laser","Barrel","Tile","Tile","Tile","Tile","Health","Tile","Tile","Tile","Tile","Barrel","Laser","Tile","Acid","Tile","Tile","Laser","Laser"],
 		 	["Tile","Tile","Tile","Tile","Barrel","Tile","Laser","Barrel","Acid","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Acid","Barrel","Laser","Tile","Barrel","Tile","Tile","Tile","Tile"],
 		 	["Tile","Tile","Tile","Tile","Tile","Tile","Laser","Barrel","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Barrel","Laser","Tile","Tile","Tile","Tile","Tile","Tile"],
