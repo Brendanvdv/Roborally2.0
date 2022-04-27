@@ -74,4 +74,5 @@ public class Board extends JPanel{
 	board[x][y] = tile;
     }
     
+    
 }

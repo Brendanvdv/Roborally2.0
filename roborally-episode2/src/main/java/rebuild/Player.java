@@ -14,8 +14,10 @@ public class Player {
     private boolean stopTurn = false;
 
     public Player() {
-	robot = new Robot();
+    Robot robot = Robot.getRobotInstance();
+    	
     }
+    
 
     public Robot getRobot() {
 	return robot;

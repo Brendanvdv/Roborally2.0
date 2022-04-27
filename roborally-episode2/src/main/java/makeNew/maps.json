@@ -10,5 +10,54 @@
 		   ["Laser","Laser","Laser","Barrel","Tile","Tile","Tile","Barrel","Laser","Laser","Laser"],
 		   ["Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile", "Tile", "Tile"],
 		   ["Tile","Tile","GearL","Tile","Tile","Tile","Tile","Tile","Tile","Tile", "GearR", "Tile"]
- 	]
+ 	],
+ 	
+ 	"medium" : [
+		 	["Laser","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Laser"], // Dimensions
+			["Tile" ,"ConveyorE","ConveyorS","Tile" ,"Tile" ,"Tile" ,"Barrel","Acid","Tile" ,"Acid","Barrel","Tile" ,"Tile" ,"Tile" ,"ConveyorS","ConveyorW","Tile"],
+			["Tile" ,"Tile" ,"ConveyorE","ConveyorE","Health","Tile" ,"Barrel","GearR","GearR","GearR","Barrel","Tile" ,"Health","ConveyorW","ConveyorW","Tile" ,"Tile"],
+			["Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Barrel","Acid","Acid","Acid","Barrel","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile"],
+			["GearL","Tile" ,"GearL","Barrel","Barrel","Barrel","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Barrel","Barrel","Barrel","GearL","Tile" ,"GearL"],
+			["Tile" ,"GearR","Tile" ,"Barrel","Barrel","Laser","Laser","Laser","Laser","Laser","Laser","Laser","Barrel","Barrel","Tile" ,"GearR","Tile"],
+			["Tile" ,"Tile" ,"Tile" ,"Barrel","Laser","Tile" ,"Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Tile" ,"Laser","Barrel","Tile" ,"Tile" ,"Tile"],
+			["Tile" ,"Tile" ,"Tile" ,"Tile" ,"Laser","Tile" ,"Tile" ,"GearR","Tile" ,"GearL","Tile" ,"Tile" ,"Laser","Tile" ,"Tile" ,"Tile" ,"Tile"],
+			["Tile" ,"Barrel","ConveyorE","ConveyorE","Laser","Pit","Tile" ,"Pit","Checkpoint","Pit","Tile" ,"Pit","Laser","ConveyorE","ConveyorE","Barrel","Tile"],
+			["Tile" ,"Tile" ,"Tile" ,"Tile" ,"Laser","Tile" ,"Tile" ,"GearR","Tile" ,"GearL","Tile" ,"Tile" ,"Laser","Tile" ,"Tile" ,"Tile" ,"Tile"],
+			["Tile" ,"Tile" ,"Tile" ,"Barrel","Laser","Tile" ,"Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Tile" ,"Laser","Barrel","Tile" ,"Tile" ,"Tile"],
+			["Tile" ,"GearR","Tile" ,"Barrel","Barrel","Laser","Laser","Laser","Laser","Laser","Laser","Laser","Barrel","Barrel","Tile" ,"GearL","Tile"],
+			["GearR","Tile" ,"GearR","Barrel","Barrel","Barrel","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Barrel","Barrel","Barrel","GearL","Tile" ,"GearL"],
+			["Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Barrel","Acid","Acid","Acid","Barrel","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile"],
+			["Tile" ,"Tile" ,"Conveyor","Conveyor","Health","Tile" ,"Barrel","GearR","GearR","GearR","Barrel","Tile" ,"Health","Conveyor","Conveyor","Tile" ,"Tile"],
+			["Tile" ,"Conveyor","Conveyor","Tile" ,"Tile" ,"Tile" ,"Barrel","Acid","Tile" ,"Acid","Barrel","Tile" ,"Tile" ,"Tile" ,"Conveyor","Conveyor","Tile"]
+		 	],
+		 	
+	"hard": [
+		 	["Tile","Laser","Tile","Tile","Barrel","Tile","Laser","Barrel","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile", "Barrel","Laser","Tile","Barrel","Tile","Tile","Laser","Tile"], // Dimensions
+		 	["Laser","Laser","Tile","Tile","Acid","Tile","Laser","Barrel","Tile","Tile","Tile","Tile","Health","Tile","Tile","Tile","Tile","Barrel","Laser","Tile","Acid","Tile","Tile","Laser","Laser"],
+		 	["Tile","Tile","Tile","Tile","Barrel","Tile","Laser","Barrel","Acid","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Acid","Barrel","Laser","Tile","Barrel","Tile","Tile","Tile","Tile"],
+		 	["Tile","Tile","Tile","Tile","Tile","Tile","Laser","Barrel","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Barrel","Laser","Tile","Tile","Tile","Tile","Tile","Tile"],
+		 	["Barrel","Acid","Barrel","Tile","Barrel","Tile","Laser","Barrel","Acid","Tile","GearL","Barrel","Tile","Barrel","GearL","Tile","Acid","Barrel","Laser","Tile","Barrel","Tile","Barrel","Acid"],
+		 	["Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Laser","Barrel","Tile" ,"Tile" ,"Tile" ,"Barrel","Tile" ,"Barrel","Tile" ,"Tile" ,"Tile" ,"Barrel","Laser","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile"],
+		 	["Laser","Laser","Laser","Laser","Laser","Laser","Laser","Barrel","Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Barrel","Laser","Laser","Laser","Laser","Laser","Laser","Laser"],
+		 	["Tile" ,"Tile" ,"ConveyorS","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"ConveyorS","Tile" ,"Tile"],
+		 	["Tile" ,"Tile" ,"ConveyorS","Tile" ,"Tile" ,"ConveyorN","Pit","Pit","Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Pit","Pit","ConveyorN","Tile" ,"Tile" ,"ConveyorS","Tile" ,"Tile"],
+		 	["Tile" ,"Tile" ,"ConveyorS","Tile" ,"Tile" ,"ConveyorN","ConveyorW","Pit","Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Pit","ConveyorE","ConveyorN","Tile" ,"Tile" ,"ConveyorS","Tile" ,"Tile"],
+		 	["Tile" ,"Tile" ,"ConveyorS","Tile" ,"Tile" ,"Health","ConveyorN","Tile" ,"Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Tile" ,"ConveyorN","Health","Tile" ,"Tile" ,"ConveyorS","Tile" ,"Tile"],
+		 	["Tile" ,"Tile" ,"ConveyorE","ConveyorE","ConveyorE","ConveyorE","ConveyorN","Tile" ,"Tile" ,"Tile" ,"Barrel","Laser","Laser","Laser","Barrel","Tile" ,"Tile" ,"Tile" ,"ConveyorN","ConveyorW","ConveyorW","ConveyorW","ConveyorW","Tile" ,"Tile"],
+		 	["Health","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"GearR","Tile" ,"Tile" ,"Barrel","Laser","Checkpoint","Laser","Barrel","Tile" ,"Tile" ,"GearR","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Health"],
+		 	["Tile" ,"Tile" ,"ConveyorE","ConveyorE","ConveyorE","ConveyorE","ConveyorS","Tile" ,"Tile" ,"Tile" ,"Barrel","Laser","Laser","Laser","Barrel","Tile" ,"Tile" ,"Tile" ,"ConveyorS","ConveyorW","ConveyorW","ConveyorW","ConveyorW","Tile" ,"Tile"],
+		 	["Tile" ,"Tile" ,"ConveyorN","Tile" ,"Tile" ,"Health","ConveyorS","Tile" ,"Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Tile" ,"ConveyorS","Health","Tile" ,"Tile" ,"ConveyorN","Tile" ,"Tile"],
+		 	["Tile" ,"Tile" ,"ConveyorN","Tile" ,"Tile" ,"ConveyorS","ConveyorW","Pit","Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Pit","ConveyorE","ConveyorS","Tile" ,"Tile" ,"ConveyorN","Tile" ,"Tile"],
+		 	["Tile" ,"Tile" ,"ConveyorN","Tile" ,"Tile" ,"ConveyorS","Pit","Pit","Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Pit","Pit","ConveyorS","Tile" ,"Tile" ,"ConveyorN","Tile" ,"Tile"],
+		 	["Tile" ,"Tile" ,"ConveyorN","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"ConveyorN","Tile" ,"Tile"],
+		 	["Laser","Laser","Laser","Laser","Laser","Laser","Laser","Barrel","Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Tile" ,"Barrel","Tile" ,"Tile" ,"Barrel","Laser","Laser","Laser","Laser","Laser","Laser","Laser"],
+		 	["Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Laser","Barrel","Tile" ,"Tile" ,"Tile" ,"Barrel","Tile" ,"Barrel","Tile" ,"Tile" ,"Tile" ,"Barrel","Laser","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile"],
+		 	["Barrel","Acid","Barrel","Tile" ,"Barrel","Tile" ,"Laser","Barrel","Acid","Tile" ,"GearL","Barrel","Tile" ,"Barrel","GearL","Tile" ,"Acid","Barrel","Laser","Tile" ,"Barrel","Tile" ,"Barrel","Acid","Barrel"],
+		 	["Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Laser","Barrel","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Barrel","Laser","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile"],
+		 	["Tile" ,"Tile" ,"Tile" ,"Tile" ,"Barrel","Tile" ,"Laser","Barrel","Acid","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Acid","Barrel","Laser","Tile" ,"Barrel","Tile" ,"Tile" ,"Tile" ,"Tile"],
+		 	["Laser","Laser","Tile" ,"Tile" ,"Acid","Tile" ,"Laser","Barrel","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Health","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Barrel","Laser","Tile" ,"Acid","Tile" ,"Tile" ,"Laser","Laser"],
+		 	["Tile","Laser","Tile" ,"Tile" ,"Barrel","Tile" ,"Laser","Barrel","Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Tile" ,"Barrel","Laser","Tile" ,"Barrel","Tile" ,"Tile" ,"Laser","Tile"]
+		 	]
+ 		  
+		 	
  }
