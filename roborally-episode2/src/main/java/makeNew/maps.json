@@ -1,7 +1,7 @@
  { "easy": [
 		   ["Tile","Tile","GearR","Tile","Tile","Tile","Tile","Tile","GearL","Tile","Tile"],
 		   ["Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile"],
-		   ["Laser","Lase","Laser","Barrel","Tile","Tile","Tile","Barrel","Laser","Lase","Laser"],
+		   ["Laser","Laser","Laser","Barrel","Tile","Tile","Tile","Barrel","Laser","Laser","Laser"],
 		   ["Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile","Tile"],
 		   ["Tile","Tile","Tile","Tile","Barrel", "Laser","Barrel","Tile","Tile","Tile","Tile"],
 		   ["Tile", "Health","Barrel","Tile","Tile","Checkpoint","Tile","Tile","Barrel","Health","Tile"],
