@@ -1,27 +1,27 @@
 package rebuild;
 
 public class Robot {
-    private int lives = 3;
-    private int[] coordinate;
-    private boolean inCorner = false;
+
+    private int xCoor;
+    private int yCoor;
     private int dir;
-    private boolean dead = false;
-    
-    public Robot(int xCoor, int yCoor, int direction) {
-	coordinate = new int[] {xCoor,yCoor};
-	dir = direction;
-    }
-    
-    Robot(){}
+    private int lives;
+    private boolean inCorner;
 
-    public boolean isInCorner() {
-	return inCorner;
+    Robot() {}
+
+    public Robot(Integer int1, Integer int2, Integer int3) {
+	xCoor = int1; yCoor = int2; dir = int3;
     }
 
-    public void setInCorner(boolean inCorner) {
-        this.inCorner = inCorner;
+    public void setCoor(int[] coor) {
+	xCoor = coor[0]; yCoor = coor[1];
     }
-    
+
+    public int[] getCoor() {
+	return new int[] {xCoor,yCoor};
+    }
+
     public int getDir() {
 	return dir;
     }
@@ -30,34 +30,31 @@ public class Robot {
 	this.dir = dir;
     }
 
-    public int[] getCoordinate() {
-	return coordinate;
+    public boolean isDead() {
+	boolean valid = false;
+	
+	if(lives <= 0) {
+	    valid = true;
+	}
+	return valid;
     }
 
-    public void setCoordinate(int[] coordinate) {
-	this.coordinate = coordinate;
-    }
-
-    public void takeDamage(Obstacle obstacle) {
-	lives = lives - obstacle.getDamage();
-    }
-    
     public void takeDamage(int damage) {
 	lives = lives - damage;
     }
-    
+
+    public boolean isInCorner() {
+	return inCorner;
+    }
+
+    public void setInCorner(boolean inCorner) {
+	this.inCorner = inCorner;
+    }
+
     public int getLives() {
 	return lives;
     }
 
-    public boolean isDead() {
-	return dead;
-    }
 
-    public void checkDead() {
-	if(lives <= 0) {
-	    dead = true;
-	}
-    }
 
 }
