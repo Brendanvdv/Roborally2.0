@@ -1,4 +1,4 @@
-package rebuild;
+package appModel;
 
 public class Robot {
 

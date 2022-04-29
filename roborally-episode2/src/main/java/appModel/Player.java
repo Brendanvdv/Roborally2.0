@@ -1,9 +1,7 @@
-package rebuild;
+package appModel;
 import java.util.ArrayList;
 
 public class Player {
-
-    private boolean won = false;
 
     private String name;
 
@@ -168,10 +166,6 @@ public class Player {
 	if(obstacle.getType().equals("Acid")) {
 	    acidStop = true;
 	}
-	
-	if(obstacle.getType().equals("Checkpoint")) {
-	    won = true;
-	}
     }
 
     public boolean inGame() {
@@ -204,10 +198,6 @@ public class Player {
 
     public void makeRobot(Robot robot2) {
 	robot = robot2;
-    }
-    
-    public boolean hasWon() {
-	return won;
     }
 
 }
