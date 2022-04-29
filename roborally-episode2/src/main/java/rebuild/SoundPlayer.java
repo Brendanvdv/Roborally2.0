@@ -3,6 +3,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineEvent;
 import java.io.File;
+import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
 //Description: Plays a sound file
@@ -25,7 +26,7 @@ public class SoundPlayer {
                 });
 
                 //load the sound file into the clip and start playing it
-                clip.open(AudioSystem.getAudioInputStream(new File(fileName + ".wav")));
+                clip.open(AudioSystem.getAudioInputStream(new File("src/test/resources/sounds/" + fileName + ".wav")));
                 clip.start();
                 syncLatch.await();
 
@@ -36,6 +37,12 @@ public class SoundPlayer {
 
         }).start();
 
+    }
+    
+    //Play random sound given an array of sound names
+    public static void playRandomSound(String[] sounds) {
+    	int rnd = new Random().nextInt(sounds.length);
+    	playSound(sounds[rnd]);
     }
 
 }
