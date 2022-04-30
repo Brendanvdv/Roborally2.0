@@ -1,15 +1,14 @@
-package view;
+package appView;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import rebuild.Board;
-import rebuild.Tile;
+import appModel.Board;
 
 public class BoardView extends JPanel {
+
     public BoardView(Board board){
 
 	setLayout(new GridLayout(board.getCols(), board.getRows()));

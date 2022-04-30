@@ -1,4 +1,4 @@
-package rebuild;
+package appModel;
 
 // Responsibility: Produce cards and card specific variables
 // Not open for extension yet

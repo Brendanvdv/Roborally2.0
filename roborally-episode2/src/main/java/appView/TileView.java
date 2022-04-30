@@ -1,6 +1,5 @@
-package view;
+package appView;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -10,12 +9,12 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import rebuild.Tile;
+import appModel.Tile;
 
 public class TileView extends JPanel {
+
 
     public static final int PIXEL_SIZE = 64;
 

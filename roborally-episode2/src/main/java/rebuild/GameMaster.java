@@ -1,6 +1,10 @@
 package rebuild;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import org.json.simple.parser.ParseException;
 
 
 // This class acts as a facade button for GameInstance
@@ -11,9 +15,17 @@ public class GameMaster {
     private ArrayList<Player> players;
     private int diff;
 
-    public GameMaster(int length, int width, int playerCount, int difficulty) {
+    public GameMaster(int playerCount, int difficulty) {
 	this.diff = difficulty;
-	setBoardDim(new int[] {length,width});
+	
+	if(diff == 1) {
+	    setBoardDim(new int[] {11,11});
+	} else if(diff == 2) {
+	    setBoardDim(new int[] {17,17});
+	} else if(diff == 3) {
+	    setBoardDim(new int[] {25,25});
+	}
+	
 	setPlayerAmount(playerCount);
     }
 

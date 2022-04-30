@@ -1,4 +1,4 @@
-package rebuild;
+package appModel;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -13,15 +13,16 @@ public class Board {
     private int rows;
     MapsReader mr;
 
-    public Board(int length, int width, int difficulty) {
-	cols = length; rows = width;
-
+    public Board(int difficulty) {
 	mr = new MapsReader(difficulty);
 	init(difficulty);
     }
     
     private void init(int difficulty) {
 	gameBoard = new Tile[mr.getMap().length][mr.getMap().length];
+	
+	cols = mr.getMap().length;
+	rows = mr.getMap().length;
 
 	for (int i = 0; i < gameBoard.length; i++) {
 	    for (int j = 0; j < gameBoard.length; j++) {
