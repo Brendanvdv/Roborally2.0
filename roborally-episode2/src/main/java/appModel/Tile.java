@@ -58,24 +58,12 @@ public class Tile {
 	return obstacle;
     }
 
-    public boolean validObstacle() {
-	return !Objects.isNull(obstacle);
-    }
-
     public TyleType getType() {
 	return type;
     }
 
-    public void setObstacle(Obstacle obstacle2) {
-	obstacle = obstacle2;
-    }
-
     public boolean isContainsRobot() {
         return containsRobot;
-    }
-
-    public void setType(TyleType tp) {
-	type = tp;
     }
 
     public int getDir() {

@@ -28,6 +28,7 @@ public class GameMaster {
 	for (int i = 0; i < playerAmount; i++) {
 	    players.add(new Player("Player " + (i+1)));
 	    players.get(i).getRobot().setNumber(i+1);
+	    players.get(i).setBoard(getBoard());
 	}
 
 	game.setPlayers(players);
@@ -35,10 +36,6 @@ public class GameMaster {
 
     private void spawnRobots() {
 	for(Player player : game.getPlayers()) {
-
-	    //	    player.setBoard(game.getBoard());
-	    player.getRobot().setInCorner(true);
-
 
 	    if(player.getName().equals("Player 1")) {
 		player.getRobot().setCoor(new int[] {0,0});
@@ -76,7 +73,6 @@ public class GameMaster {
 
 	    player.makeActionCards();
 	    player.noAcid();
-
 	}
     }
 
@@ -127,5 +123,9 @@ public class GameMaster {
     
     public int numberOfPlayers() {
 	return game.getPlayers().size();
+    }
+    
+    public GameInstance getGame() {
+	return game;
     }
 }

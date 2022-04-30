@@ -22,10 +22,10 @@ public class AppControl {
     }
 
 
-    public static void main(String[] args) {
-	AppControl app = new AppControl();
-	app.launch();
-    }
+//    public static void main(String[] args) {
+//	AppControl app = new AppControl();
+//	app.launch();
+//    }
 
 
     public void setUp(int playerAmount, int difficulty) {

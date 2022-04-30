@@ -34,6 +34,8 @@ public class Obstacle {
 	    setType("GearL");
 	} else if(type.equals(TyleType.GearR)) {
 	    setType("GearR");
+	} else if(type.equals(TyleType.Checkpoint)){
+	    setType("Checkpoint");
 	} else {
 	    setType("Floor");
 	}
