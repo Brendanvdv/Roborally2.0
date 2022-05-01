@@ -5,7 +5,6 @@ import javax.swing.JFrame;
 import appModel.GameMaster;
 import appView.LaunchView;
 import appView.ModelView;
-import appView.SplashScreen;
 
 public class AppControl {
 
