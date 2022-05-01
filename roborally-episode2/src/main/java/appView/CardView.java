@@ -9,19 +9,10 @@ import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import appControl.ModelControl;
 import appModel.ActionCard;
 import appModel.CardType;
 
 public class CardView extends JPanel {
-  
-    private boolean Active = true;
-    private int counter = 0;
-    private ModelControl model;
-
-    private ArrayList<ActionCard> actionCards;
-    ArrayList<String> handS = new ArrayList<String>();
-    ArrayList<ActionCard> hand = new ArrayList<ActionCard>();;
 
 	private boolean Active = true;
 	private int counter = 0;
@@ -62,12 +53,6 @@ public class CardView extends JPanel {
 		}
 	}
 
-
-	    JButton x = (JButton) e.getSource();
-	    if(handS.size() < 4) {
-		handS.add(x.getText());
-	    }
-
 	class buttonAction extends AbstractAction {
 
 		public void actionPerformed(ActionEvent e) {
@@ -103,65 +88,9 @@ public class CardView extends JPanel {
 		}
 	}
 
-
 	public boolean isActive() {
 		return Active;
 	}
-
-
-	    for(String card : handS) {
-		if(card.equals("Move 1")) {
-		    hand.add(new ActionCard(CardType.Move1));
-		} else if(card.equals("Move 2")) {
-		    hand.add(new ActionCard(CardType.Move2));
-		} else if(card.equals("Move 3")) {
-		    hand.add(new ActionCard(CardType.Move3));
-		} else if(card.equals("Turn Left")) {
-		    hand.add(new ActionCard(CardType.TurnL));
-		} else if(card.equals("Turn Right")) {
-		    hand.add(new ActionCard(CardType.TurnR));
-		} else if(card.equals("U-Turn")) {
-		    hand.add(new ActionCard(CardType.UTurn));
-		}
-	    }
-	    
-	    if(counter == 4) {
-		counter = 0;
-		Active = false;
-		model.setHand(getHand(), model.getView().getNumber());
-		
-		if(model.getView().getNumber() == model.getNumberOfPlayers() - 1) {
-		    model.nextTurn();
-		}
-		
-		model.getView().setNumber(((model.getView().getNumber()+1)%model.getNumberOfPlayers()));
-		model.play();
-		hand = new ArrayList<ActionCard>();
-	    }
-	    
-	}
-    }
-    
-    public boolean isActive() {
-	return Active;
-    }
-    
-    public void setActive(boolean bool) {
-	Active = bool;
-    }
-    
-    public ArrayList<ActionCard> getHand() {
-	
-	ArrayList<ActionCard> g = new ArrayList<ActionCard>();
-	g.add(hand.get(6)); g.add(hand.get(7));
-	g.add(hand.get(8)); g.add(hand.get(9));
-
-        return g;
-    }
-
-    public void setModel(ModelControl model) {
-	this.model = model;
-    }
 
 	public void setActive(boolean bool) {
 		Active = bool;
@@ -181,5 +110,4 @@ public class CardView extends JPanel {
 	public void setHand(ArrayList<ActionCard> hand) {
 		this.hand = hand;
 	}
-
 }
