@@ -9,6 +9,7 @@ import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import appControl.ModelControl;
 import appModel.ActionCard;
 import appModel.CardType;
 
@@ -17,6 +18,7 @@ public class CardView extends JPanel {
 
     private boolean Active = true;
     private int counter = 0;
+    private ModelControl model;
 
     private ArrayList<ActionCard> actionCards;
     ArrayList<String> handS = new ArrayList<String>();
@@ -59,13 +61,8 @@ public class CardView extends JPanel {
 	    if(handS.size() < 4) {
 		handS.add(x.getText());
 	    }
-	   	    
 
 	    counter++;
-
-	    
-
-
 
 	    for(String card : handS) {
 		if(card.equals("Move 1")) {
@@ -86,8 +83,17 @@ public class CardView extends JPanel {
 	    if(counter == 4) {
 		counter = 0;
 		Active = false;
-
+		model.setHand(getHand(), model.getView().getNumber());
+		
+		if(model.getView().getNumber() == model.getNumberOfPlayers() - 1) {
+		    model.nextTurn();
+		}
+		
+		model.getView().setNumber(((model.getView().getNumber()+1)%model.getNumberOfPlayers()));
+		model.play();
+		hand = new ArrayList<ActionCard>();
 	    }
+	    
 	}
     }
     
@@ -108,7 +114,7 @@ public class CardView extends JPanel {
         return g;
     }
 
-    public void setHand(ArrayList<ActionCard> hand) {
-        this.hand = hand;
+    public void setModel(ModelControl model) {
+	this.model = model;
     }
 }

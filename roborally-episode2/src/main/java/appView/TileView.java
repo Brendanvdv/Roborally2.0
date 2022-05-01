@@ -16,9 +16,6 @@ import appModel.Tile;
 
 public class TileView extends JPanel {
 
-
-    public static final int PIXEL_SIZE = 64;
-
     private boolean containsRobot = false;
     private Image image;
     private Image imageRobot;
@@ -97,12 +94,14 @@ public class TileView extends JPanel {
 	    }
 
 	    AffineTransform old2 = g2d.getTransform();
+//	    System.out.println(direction);
+	    
 	    if(difficulty == 1) {
-		g2d.rotate(Math.toRadians((direction+2)*90), 32, 32);
+		g2d.rotate(Math.toRadians((direction + 2)*90), 32, 32);
 	    } else if(difficulty == 2) {
-		g2d.rotate(Math.toRadians((direction+2)*90), 20.5, 20.5);
+		g2d.rotate(Math.toRadians((direction + 2)*90), 20.5, 20.5);
 	    } else if(difficulty == 3) {
-		g2d.rotate(Math.toRadians((direction+2)*90), 14, 14);
+		g2d.rotate(Math.toRadians((direction + 2)*90), 14, 14);
 	    }
 	    
 	    g2d.drawImage(imageRobot, 0, 0, null);

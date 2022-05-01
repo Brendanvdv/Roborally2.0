@@ -79,20 +79,19 @@ public class GameMaster {
     public void execMoves() {
 
 	for (int i = 0; i < 4; i++) {
-
-
 	    for(Player player : game.getPlayers()) {
 
 		if(player.inGame()) {
-		    game.getBoard().getTile(player.getRobot().getCoor()).setContainsRobot(false);
+		    Board b = game.getBoard();
+		    b.getTile(player.getRobot().getCoor()).setContainsRobot(false);
 
 		    player.execHand(i);
 
 		    checkWon(player.getRobot());
 
-		    game.getBoard().getTile(player.getRobot().getCoor()).setContainsRobot(true);
-		    game.getBoard().getTile(player.getRobot().getCoor()).setRbt(player.getRobot().getNumber());
-
+		    b.getTile(player.getRobot().getCoor()).setContainsRobot(true);
+		    b.getTile(player.getRobot().getCoor()).setRbt(player.getRobot().getNumber());
+		    game.setBoard(b);
 		    if(player.getRobot().isDead()) {
 			player.setGameOver(true);
 		    }
@@ -127,5 +126,9 @@ public class GameMaster {
     
     public GameInstance getGame() {
 	return game;
+    }
+    
+    public boolean hasEnded() {
+	return gameEnd;
     }
 }
