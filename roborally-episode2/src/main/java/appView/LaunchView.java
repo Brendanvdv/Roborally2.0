@@ -38,7 +38,7 @@ public class LaunchView extends JFrame {
 	image = Toolkit.getDefaultToolkit().createImage("src/test/resources/images/splashScreen.gif");
 	this.launchControl = launchControl;
 	initGUI();
-	//	SoundPlayer.playSound("welcome");
+	SoundPlayer.playSound("welcome");
 
 
     }
@@ -93,6 +93,7 @@ public class LaunchView extends JFrame {
 	    public void actionPerformed(ActionEvent e) {
 		if(playerAmount != 0 && difficulty != 0) {
 		    launchControl.startGame(playerAmount,difficulty);
+		    SoundPlayer.startSoundTrack();
 		}
 	    }
 	});
