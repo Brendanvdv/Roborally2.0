@@ -21,7 +21,7 @@ public class Robot {
 	return new int[] {xCoor,yCoor};
     }
 
-	public int getDir() {
+    public int getDir() {
 	return dir;
     }
 
