@@ -80,7 +80,6 @@ public class GameMaster {
 
 	for (int i = 0; i < 4; i++) {
 	    for(Player player : game.getPlayers()) {
-
 		if(player.inGame()) {
 		    Board b = game.getBoard();
 		    b.getTile(player.getRobot().getCoor()).setContainsRobot(false);
@@ -91,6 +90,7 @@ public class GameMaster {
 
 		    b.getTile(player.getRobot().getCoor()).setContainsRobot(true);
 		    b.getTile(player.getRobot().getCoor()).setRbt(player.getRobot().getNumber());
+		    b.getTile(player.getRobot().getCoor()).setDir(player.getRobot().getDir());
 		    game.setBoard(b);
 		    if(player.getRobot().isDead()) {
 			player.setGameOver(true);
@@ -107,7 +107,7 @@ public class GameMaster {
 	    }
 	}
     }
-    
+
     public Board getBoard() {
 	return game.getBoard();
     }
@@ -119,15 +119,15 @@ public class GameMaster {
     public void setHand(ArrayList<ActionCard> hand, int i) {
 	game.getPlayers().get(i).setHand(hand);
     }
-    
+
     public int numberOfPlayers() {
 	return game.getPlayers().size();
     }
-    
+
     public GameInstance getGame() {
 	return game;
     }
-    
+
     public boolean hasEnded() {
 	return gameEnd;
     }
