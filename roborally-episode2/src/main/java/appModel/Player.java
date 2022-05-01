@@ -1,198 +1,198 @@
 package appModel;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class Player {
 
-    private String name;
+	private String name;
 
-    private Robot robot;
-    
-    private boolean won = false;
+	private Robot robot;
 
-    private boolean inGame;
-    private boolean acidStop = false;
+	private boolean won = false;
 
-    private ArrayList<ActionCard> actionCards;
-    private ArrayList<ActionCard> hand;
+	private boolean inGame;
+	private boolean acidStop = false;
 
-    private Board board;
+	private ArrayList<ActionCard> actionCards;
+	private ArrayList<ActionCard> hand;
 
-    public Player(String s) {
-	setGameOver(false);
-	setName(s);
-	robot = new Robot();
-    }
+	private Board board;
 
-    public String getName() {
-	return name;
-    }
-
-    public void setName(String name) {
-	this.name = name;
-    }
-
-    public Robot getRobot() {
-	return robot;
-    }
-
-    public void makeActionCards() {
-	actionCards = new ArrayList<ActionCard>();
-
-	for (int i = 0; i < 9; i++) {
-	    actionCards.add(new ActionCard());
+	public Player(String s) {
+		setGameOver(false);
+		setName(s);
+		robot = new Robot();
 	}
-    }
 
-    public void execHand(int i) {
-	
-	if(!acidStop) {    
-	    execCard(hand.get(i)); 
+	public String getName() {
+		return name;
 	}
-    }
 
-    public void execCard(ActionCard actionCard) {
-	if(actionCard.isMovement()) {
-	    if(validMove(actionCard)) {
+	public void setName(String name) {
+		this.name = name;
+	}
 
-		if(actionCard.getCardType().equals(CardType.Move2)) {
-		    move(new ActionCard(CardType.Move1));
-		    move(new ActionCard(CardType.Move1));
-		} else if(actionCard.getCardType().equals(CardType.Move3)) {
-		    move(new ActionCard(CardType.Move1));
-		    move(new ActionCard(CardType.Move1));
-		    move(new ActionCard(CardType.Move1));
-		} else {
-		    move(new ActionCard(CardType.Move1));
+	public Robot getRobot() {
+		return robot;
+	}
+
+	public void makeActionCards() {
+		actionCards = new ArrayList<ActionCard>();
+
+		for (int i = 0; i < 9; i++) {
+			actionCards.add(new ActionCard());
 		}
-	    }
-	} else {
-	    rotate(actionCard);
-	}
-    }
-
-    public boolean validMove(ActionCard actionCard) {
-	boolean valid = false;
-
-
-	if(robot.getDir() == 1) {
-	    if(robot.getCoor()[0]+actionCard.getMagnitude() < board.getCols()-1) {
-		valid = true;
-	    }
-	} else if(robot.getDir() == 2) {
-	    if(robot.getCoor()[1]+actionCard.getMagnitude() < board.getRows()-1) {
-		valid = true;
-	    }
-	} else if(robot.getDir() == 3) {
-	    if(0 <= robot.getCoor()[0]-actionCard.getMagnitude()) {
-		valid = true;
-	    }
-	} else if(robot.getDir() == 0) {
-	    if(0 <= robot.getCoor()[1]-actionCard.getMagnitude()) {
-		valid = true;
-	    }
 	}
 
-	return valid;
-    }
+	public void execHand(int i) {
 
-    public void move(ActionCard actionCard) {
-	if(robot.getDir() == 1) {
-	    robot.setCoor(new int[] {robot.getCoor()[0]+actionCard.getMagnitude(),robot.getCoor()[1]});
-	} else if(robot.getDir() == 2) {
-	    robot.setCoor(new int[] {robot.getCoor()[0],robot.getCoor()[1]+actionCard.getMagnitude()});
-	} else if(robot.getDir() == 3) {
-	    robot.setCoor(new int[] {robot.getCoor()[0]-actionCard.getMagnitude(),robot.getCoor()[1]});
-	} else if(robot.getDir() == 0) {
-	    robot.setCoor(new int[] {robot.getCoor()[0],robot.getCoor()[1]-actionCard.getMagnitude()});
+		if (!acidStop) {
+			execCard(hand.get(i));
+		}
 	}
-	
-	if(!Objects.isNull(board)) {
-	    obstacleInteract();
+
+	public void execCard(ActionCard actionCard) {
+		if (actionCard.isMovement()) {
+			if (validMove(actionCard)) {
+
+				if (actionCard.getCardType().equals(CardType.Move2)) {
+					move(new ActionCard(CardType.Move1));
+					move(new ActionCard(CardType.Move1));
+				} else if (actionCard.getCardType().equals(CardType.Move3)) {
+					move(new ActionCard(CardType.Move1));
+					move(new ActionCard(CardType.Move1));
+					move(new ActionCard(CardType.Move1));
+				} else {
+					move(new ActionCard(CardType.Move1));
+				}
+			}
+		} else {
+			rotate(actionCard);
+		}
 	}
-    }
 
-    public void rotate(ActionCard actionCard) {
-	if(actionCard.getCardType().equals(CardType.TurnL)) {
-	    robot.setDir((robot.getDir()+3)%4);
-	} else if(actionCard.getCardType().equals(CardType.TurnR)) {
-	    robot.setDir((robot.getDir()+1)%4);
-	} else if(actionCard.getCardType().equals(CardType.UTurn)) {
-	    robot.setDir((robot.getDir()+2)%4);
+	public boolean validMove(ActionCard actionCard) {
+		boolean valid = false;
+
+		if (robot.getDir() == 1) {
+			if (robot.getCoor()[0] + actionCard.getMagnitude() < board.getCols() - 1) {
+				valid = true;
+			}
+		} else if (robot.getDir() == 2) {
+			if (robot.getCoor()[1] + actionCard.getMagnitude() < board.getRows() - 1) {
+				valid = true;
+			}
+		} else if (robot.getDir() == 3) {
+			if (0 <= robot.getCoor()[0] - actionCard.getMagnitude()) {
+				valid = true;
+			}
+		} else if (robot.getDir() == 0) {
+			if (0 <= robot.getCoor()[1] - actionCard.getMagnitude()) {
+				valid = true;
+			}
+		}
+
+		return valid;
 	}
-    }
-    
-    public void obstacleInteract(Obstacle obstacle) {
-	robot.takeDamage(obstacle.getDamage());
-	
-	if(obstacle.getType().equals("Barrel")) {
-	    rotate(new ActionCard(CardType.UTurn));
-	    move(new ActionCard(CardType.Move1));
-	    rotate(new ActionCard(CardType.UTurn));
-	} else if(obstacle.getType().equals("GearR")) {
-	    rotate(new ActionCard(CardType.TurnR));	    
-	} else if(obstacle.getType().equals("GearL")) {
-	    rotate(new ActionCard(CardType.TurnL));
-	}else if(obstacle.getType().equals("ConveyorN")) {
-	    robot.setDir(0);
-	    move(new ActionCard(CardType.Move1));
-	}else if(obstacle.getType().equals("ConveyorS")) {
-	    robot.setDir(2);
-	    move(new ActionCard(CardType.Move1));
-	}else if(obstacle.getType().equals("ConveyorW")) {
-	    robot.setDir(3);
-	    move(new ActionCard(CardType.Move1));
-	}else if(obstacle.getType().equals("ConveyorE")) {
-	    robot.setDir(1);
-	    move(new ActionCard(CardType.Move1));
-	}else if(obstacle.getType().equals("Acid")) {
-	    acidStop = true;
-	}else if(obstacle.getType().equals("Checkpoint")) {
-	    won = true;
+
+	public void move(ActionCard actionCard) {
+		if (robot.getDir() == 1) {
+			robot.setCoor(new int[] { robot.getCoor()[0] + actionCard.getMagnitude(), robot.getCoor()[1] });
+		} else if (robot.getDir() == 2) {
+			robot.setCoor(new int[] { robot.getCoor()[0], robot.getCoor()[1] + actionCard.getMagnitude() });
+		} else if (robot.getDir() == 3) {
+			robot.setCoor(new int[] { robot.getCoor()[0] - actionCard.getMagnitude(), robot.getCoor()[1] });
+		} else if (robot.getDir() == 0) {
+			robot.setCoor(new int[] { robot.getCoor()[0], robot.getCoor()[1] - actionCard.getMagnitude() });
+		}
+
+		if (!Objects.isNull(board)) {
+			obstacleInteract();
+		}
 	}
-    }
 
-    private void obstacleInteract() {
-	Obstacle obstacle;
+	public void rotate(ActionCard actionCard) {
+		if (actionCard.getCardType().equals(CardType.TurnL)) {
+			robot.setDir((robot.getDir() + 3) % 4);
+		} else if (actionCard.getCardType().equals(CardType.TurnR)) {
+			robot.setDir((robot.getDir() + 1) % 4);
+		} else if (actionCard.getCardType().equals(CardType.UTurn)) {
+			robot.setDir((robot.getDir() + 2) % 4);
+		}
+	}
 
-	obstacle = board.getTile(robot.getCoor()).getObstacle();
+	public void obstacleInteract(Obstacle obstacle) {
+		robot.takeDamage(obstacle.getDamage());
 
-	obstacleInteract(obstacle);	
-    }
+		if (obstacle.getType().equals("Barrel")) {
+			rotate(new ActionCard(CardType.UTurn));
+			move(new ActionCard(CardType.Move1));
+			rotate(new ActionCard(CardType.UTurn));
+		} else if (obstacle.getType().equals("GearR")) {
+			rotate(new ActionCard(CardType.TurnR));
+		} else if (obstacle.getType().equals("GearL")) {
+			rotate(new ActionCard(CardType.TurnL));
+		} else if (obstacle.getType().equals("ConveyorN")) {
+			robot.setDir(0);
+			move(new ActionCard(CardType.Move1));
+		} else if (obstacle.getType().equals("ConveyorS")) {
+			robot.setDir(2);
+			move(new ActionCard(CardType.Move1));
+		} else if (obstacle.getType().equals("ConveyorW")) {
+			robot.setDir(3);
+			move(new ActionCard(CardType.Move1));
+		} else if (obstacle.getType().equals("ConveyorE")) {
+			robot.setDir(1);
+			move(new ActionCard(CardType.Move1));
+		} else if (obstacle.getType().equals("Acid")) {
+			acidStop = true;
+		} else if (obstacle.getType().equals("Checkpoint")) {
+			won = true;
+		}
+	}
 
-    public boolean inGame() {
-	return this.inGame;
-    }
+	private void obstacleInteract() {
+		Obstacle obstacle;
 
-    public void setGameOver(boolean b) {
-	inGame = !b;
-    }
+		obstacle = board.getTile(robot.getCoor()).getObstacle();
 
-    public void setBoard(Board board) {
-	this.board = board;
-    }
-    
-    public boolean onAcid() {
-	return acidStop;
-    }
+		obstacleInteract(obstacle);
+	}
 
-    public void noAcid() {
-	acidStop = false;
-    }
+	public boolean inGame() {
+		return this.inGame;
+	}
 
-    public ArrayList<ActionCard> getActionCards() {
-	return actionCards;
-    }
+	public void setGameOver(boolean b) {
+		inGame = !b;
+	}
 
-    public void setHand(ArrayList<ActionCard> hand2) {
-	hand = hand2;	
-    }
+	public void setBoard(Board board) {
+		this.board = board;
+	}
 
-    public void makeRobot(Robot robot2) {
-	robot = robot2;
-    }
+	public boolean onAcid() {
+		return acidStop;
+	}
 
-    public boolean hasWon() {
-	return won;
-    }
+	public void noAcid() {
+		acidStop = false;
+	}
+
+	public ArrayList<ActionCard> getActionCards() {
+		return actionCards;
+	}
+
+	public void setHand(ArrayList<ActionCard> hand2) {
+		hand = hand2;
+	}
+
+	public void makeRobot(Robot robot2) {
+		robot = robot2;
+	}
+
+	public boolean hasWon() {
+		return won;
+	}
 }
