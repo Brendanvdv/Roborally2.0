@@ -5,10 +5,5 @@ package appModel;
 // LID irrelevant
 
 public enum CardType {
-    Move1,
-    Move2,
-    Move3,
-    TurnL,
-    TurnR,
-    UTurn,
+	Move1, Move2, Move3, TurnL, TurnR, UTurn,
 }
