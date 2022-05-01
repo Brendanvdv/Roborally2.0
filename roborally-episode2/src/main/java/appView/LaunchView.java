@@ -89,6 +89,7 @@ public class LaunchView extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (playerAmount != 0 && difficulty != 0) {
 					launchControl.startGame(playerAmount, difficulty);
+					SoundPlayer.startSoundTrack();
 				}
 			}
 		});
