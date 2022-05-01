@@ -17,7 +17,6 @@ public class GameMaster {
 
     public GameMaster(int playerAmount, int difficulty) {
 	game = new GameInstance(playerAmount, difficulty);
-
 	makePlayers(playerAmount);
 	spawnRobots();
     }

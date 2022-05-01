@@ -1,6 +1,9 @@
 package appModel;
+import appControl.SoundPlayer;
+
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 public class Player {
 
@@ -160,7 +163,11 @@ public class Player {
 
 	obstacle = board.getTile(robot.getCoor()).getObstacle();
 
-	obstacleInteract(obstacle);	
+    	if(!obstacle.getType().equals("Floor")){
+		SoundPlayer.playSound(obstacle.getSound());
+		obstacleInteract(obstacle);
+	}
+
     }
 
     public boolean inGame() {
