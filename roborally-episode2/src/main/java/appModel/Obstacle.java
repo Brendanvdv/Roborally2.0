@@ -1,5 +1,7 @@
 package appModel;
 
+//Description: Creates obstacle object for tiles
+
 public class Obstacle {
 	private int damage = 0;
 	private String type;
