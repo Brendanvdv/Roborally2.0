@@ -31,8 +31,4 @@ public class GameInstance {
     public Board getBoard() {
 	return board;
     }
-    
-    public void setBoard(Board b) {
-	board = b;
-    }
 }
