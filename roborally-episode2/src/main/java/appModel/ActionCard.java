@@ -50,7 +50,7 @@ public class ActionCard {
     
     public void cardModifiers() {
     	if(type.equals(CardType.Move1)) {
-    		movement = true;
+    	     	movement = true;
     		magnitude = 1;
     	} 
     	else if(type.equals(CardType.Move2)) {

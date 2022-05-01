@@ -50,13 +50,15 @@ public class Player {
     public void execHand(int i) {
 	
 	if(!acidStop) {    
-	    execCard(hand.get(i)); 
+	    execCard(this.hand.get(i)); 
 	}
     }
 
     public void execCard(ActionCard actionCard) {
 	if(actionCard.isMovement()) {
+//	    System.out.println("MovementCards");
 	    if(validMove(actionCard)) {
+//		System.out.println("moving");
 
 		if(actionCard.getCardType().equals(CardType.Move2)) {
 		    move(new ActionCard(CardType.Move1));
@@ -70,13 +72,14 @@ public class Player {
 		}
 	    }
 	} else {
+//	    System.out.println("GFJAFW");
 	    rotate(actionCard);
 	}
     }
 
     public boolean validMove(ActionCard actionCard) {
+	
 	boolean valid = false;
-
 
 	if(robot.getDir() == 1) {
 	    if(robot.getCoor()[0]+actionCard.getMagnitude() < board.getCols()-1) {
@@ -95,7 +98,7 @@ public class Player {
 		valid = true;
 	    }
 	}
-
+	
 	return valid;
     }
 
@@ -201,5 +204,9 @@ public class Player {
 
     public boolean hasWon() {
 	return won;
+    }
+
+    public ArrayList<ActionCard> getHand() {
+	return hand;
     }
 }
