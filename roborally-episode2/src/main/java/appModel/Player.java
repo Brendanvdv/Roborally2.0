@@ -1,5 +1,7 @@
 package appModel;
 
+import appControl.SoundPlayer;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -122,6 +124,8 @@ public class Player {
 		}
 	}
 
+
+	//This could have been done in a much nice way if we were allowed to use switch statements
 	public void obstacleInteract(Obstacle obstacle) {
 		robot.takeDamage(obstacle.getDamage());
 
@@ -156,7 +160,7 @@ public class Player {
 		Obstacle obstacle;
 
 		obstacle = board.getTile(robot.getCoor()).getObstacle();
-
+		SoundPlayer.playSound(obstacle.getSound());
 		obstacleInteract(obstacle);
 	}
 

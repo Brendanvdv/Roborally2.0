@@ -37,7 +37,7 @@ public class LaunchView extends JFrame {
 		image = Toolkit.getDefaultToolkit().createImage("src/test/resources/images/splashScreen.gif");
 		this.launchControl = launchControl;
 		initGUI();
-		// SoundPlayer.playSound("welcome");
+		SoundPlayer.playSound("welcome");
 
 	}
 
