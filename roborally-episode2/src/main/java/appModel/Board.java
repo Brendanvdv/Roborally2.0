@@ -48,8 +48,4 @@ public class Board {
     public Tile[][] getTiles() {
 	return gameBoard;
     }
-
-    public void setTile(int i, int j, Tile tile) {
-	gameBoard[i][j] = tile;
-    }
 }

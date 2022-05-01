@@ -19,6 +19,7 @@ public class MapsReader {
 	
 	try {
 	    obj = parser.parse(new FileReader("src/test/resources/maps/maps.json"));
+	    
 	} catch (FileNotFoundException e) {
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
@@ -51,20 +52,10 @@ public class MapsReader {
 	}
     }
 
-    public JSONArray getMapJ() {
-        return mapJ;
-    }
-
-    public void setMapJ(JSONArray mapJ) {
-        this.mapJ = mapJ;
-    }
     public String[][] getMap() {
         return map;
     }
 
-    public void setMap(String[][] map) {
-        this.map = map;
-    }
     
     
 }

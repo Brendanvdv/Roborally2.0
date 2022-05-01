@@ -5,14 +5,12 @@ public class Robot {
     private int xCoor;
     private int yCoor;
     private int dir;
-    private int lives;
-    private boolean inCorner;
+    private int lives = 3;
     private int number;
-
-    Robot() {}
-
-    public Robot(Integer int1, Integer int2, Integer int3) {
-	xCoor = int1; yCoor = int2; dir = int3;
+    
+    Robot() {
+	setCoor(new int[] {5,5});
+	setDir(0);
     }
 
     public void setCoor(int[] coor) {
@@ -42,14 +40,6 @@ public class Robot {
 
     public void takeDamage(int damage) {
 	lives = lives - damage;
-    }
-
-    public boolean isInCorner() {
-	return inCorner;
-    }
-
-    public void setInCorner(boolean inCorner) {
-	this.inCorner = inCorner;
     }
 
     public int getLives() {
