@@ -97,11 +97,11 @@ public class TileView extends JPanel {
 //	    System.out.println(direction);
 	    
 	    if(difficulty == 1) {
-		g2d.rotate(Math.toRadians((direction + 2)*90), 32, 32);
+		g2d.rotate(Math.toRadians((direction)*45), 32, 32);
 	    } else if(difficulty == 2) {
-		g2d.rotate(Math.toRadians((direction + 2)*90), 20.5, 20.5);
+		g2d.rotate(Math.toRadians((direction)*45), 20.5, 20.5);
 	    } else if(difficulty == 3) {
-		g2d.rotate(Math.toRadians((direction + 2)*90), 14, 14);
+		g2d.rotate(Math.toRadians((direction)*45), 14, 14);
 	    }
 	    
 	    g2d.drawImage(imageRobot, 0, 0, null);

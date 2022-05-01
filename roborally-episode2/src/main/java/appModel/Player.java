@@ -114,11 +114,17 @@ public class Player {
 
     public void rotate(ActionCard actionCard) {
 	if(actionCard.getCardType().equals(CardType.TurnL)) {
+	    System.out.println(robot.getDir());
 	    robot.setDir((robot.getDir()+3)%4);
+	    System.out.println(robot.getDir());
 	} else if(actionCard.getCardType().equals(CardType.TurnR)) {
+	    System.out.println(robot.getDir());
 	    robot.setDir((robot.getDir()+1)%4);
+	    System.out.println(robot.getDir());
 	} else if(actionCard.getCardType().equals(CardType.UTurn)) {
+	    System.out.println(robot.getDir());
 	    robot.setDir((robot.getDir()+2)%4);
+	    System.out.println(robot.getDir());
 	}
     }
     
