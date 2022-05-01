@@ -16,6 +16,7 @@ public class AppControl {
 	launch.display();
     }
 
+
     public static void main(String[] args) {
 	AppControl app = new AppControl();
 	app.launch();
@@ -26,24 +27,14 @@ public class AppControl {
 	model = new ModelControl(new GameMaster(playerAmount,difficulty));
 
 	ModelView modelView = new ModelView(model);
+	modelView.setNumber((modelView.getNumber())%model.getNumberOfPlayers());
 	model.setView(modelView);
 	model.display();
-	model.play();
 
+	model.play();
     }
 
 
-    public void play() {
-
-	model.startRunning();
-
-	for(int i = 0; i < model.numberOfPlayers(); i++) {
-	    model.getCommand().setText("Player " + (i+1) + " select your cards:");
-	    model.getCardView().boot(model.getCards(i));
-	    model.getCardView().setActive(true);
-  
-	}
-      
     private void loadHand(int i) {
 	model.setHand(model.getCardView().getHand(),i);
     }
