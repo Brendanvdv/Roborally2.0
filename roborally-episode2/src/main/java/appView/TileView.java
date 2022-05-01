@@ -94,7 +94,6 @@ public class TileView extends JPanel {
 	    }
 
 	    AffineTransform old2 = g2d.getTransform();
-//	    System.out.println(direction);
 	    
 	    if(difficulty == 1) {
 		g2d.rotate(Math.toRadians((direction)*45), 32, 32);
