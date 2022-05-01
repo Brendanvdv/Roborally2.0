@@ -77,14 +77,6 @@ public class GameMaster {
 
 	public void execMoves() {
 
-
-	for (int i = 0; i < 4; i++) {
-	    for(Player player : game.getPlayers()) {
-
-		if(player.inGame()) {
-		    Board b = game.getBoard();
-		    b.getTile(player.getRobot().getCoor()).setContainsRobot(false);
-
 		for (int i = 0; i < 4; i++) {
 
 			for (Player player : game.getPlayers()) {
@@ -94,19 +86,10 @@ public class GameMaster {
 
 					player.execHand(i);
 
-
 					checkWon(player.getRobot());
 
 					game.getBoard().getTile(player.getRobot().getCoor()).setContainsRobot(true);
 					game.getBoard().getTile(player.getRobot().getCoor()).setRbt(player.getRobot().getNumber());
-
-
-		    b.getTile(player.getRobot().getCoor()).setContainsRobot(true);
-		    b.getTile(player.getRobot().getCoor()).setRbt(player.getRobot().getNumber());
-		    game.setBoard(b);
-		    if(player.getRobot().isDead()) {
-			player.setGameOver(true);
-		    }
 
 					if (player.getRobot().isDead()) {
 						player.setGameOver(true);
@@ -121,7 +104,6 @@ public class GameMaster {
 			if (player.hasWon()) {
 				gameEnd = true;
 			}
-
 		}
 	}
 
@@ -144,30 +126,4 @@ public class GameMaster {
 	public GameInstance getGame() {
 		return game;
 	}
-
-    }
-    
-    public Board getBoard() {
-	return game.getBoard();
-    }
-
-    public ArrayList<ActionCard> getCards(int i) {
-	return game.getPlayers().get(i).getActionCards();
-    }
-
-    public void setHand(ArrayList<ActionCard> hand, int i) {
-	game.getPlayers().get(i).setHand(hand);
-    }
-    
-    public int numberOfPlayers() {
-	return game.getPlayers().size();
-    }
-    
-    public GameInstance getGame() {
-	return game;
-    }
-    
-    public boolean hasEnded() {
-	return gameEnd;
-    }
 }

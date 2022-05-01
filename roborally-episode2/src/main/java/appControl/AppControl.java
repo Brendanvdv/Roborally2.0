@@ -8,28 +8,8 @@ import appView.ModelView;
 
 public class AppControl {
 
-
-    private LaunchControl launch;
-    private ModelControl model;
-
-
-
-
-
-    private void launch() {
-	launch = new LaunchControl(this);
-	launch.display();
-    }
-
-
-    public static void main(String[] args) {
-	AppControl app = new AppControl();
-	app.launch();
-    }
-
 	private LaunchControl launch;
 	private ModelControl model;
-
 
 	private void launch() {
 		launch = new LaunchControl(this);
@@ -41,14 +21,6 @@ public class AppControl {
 		app.launch();
 	}
 
-
-	ModelView modelView = new ModelView(model);
-	modelView.setNumber((modelView.getNumber())%model.getNumberOfPlayers());
-	model.setView(modelView);
-	model.display();
-
-	model.play();
-    }
 	public void setUp(int playerAmount, int difficulty) {
 		model = new ModelControl(new GameMaster(playerAmount, difficulty));
 
