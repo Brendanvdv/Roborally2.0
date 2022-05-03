@@ -118,9 +118,6 @@ public class LaunchView extends JFrame {
 
 
     private void configureDiff() {
-	JPanel diffButtons = new JPanel();
-
-	diffButtons.setLayout(new FlowLayout());
 
 	JButton easy = new JButton("easy");
 

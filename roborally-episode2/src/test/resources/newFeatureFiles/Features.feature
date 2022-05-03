@@ -123,16 +123,8 @@ Feature: Title of your feature
   	When Game starts
   	When Robot steps on an obstacle tile
   	Then Robot interacts with the ConveyorE
-  	
-	@tag11
-  Scenario: Barrel
-  	Given 4 players and difficulty of 1
-  	And An Obstacle tile Barrel
-  	When Game starts
-  	When Robot steps on an obstacle tile
-  	Then Robot interacts with the Barrel
   
-  @tag12
+  @tag11
   Scenario: Acid
   	Given 4 players and difficulty of 1
   	And An Obstacle tile Acid
@@ -140,7 +132,7 @@ Feature: Title of your feature
   	When Robot steps on an obstacle tile
   	Then Robot interacts with the Acid
   
-  @tag13
+  @tag12
   Scenario: Checkpoint
   	Given 4 players and difficulty of 1
   	And An Obstacle tile Checkpoint
@@ -148,8 +140,14 @@ Feature: Title of your feature
   	When Robot steps on an obstacle tile
   	Then Robot interacts with the Checkpoint
 			
+	@tag13
+	Scenario: Player dies
+		Given 4 players and difficulty of 1
+		And Game starts
+		When robot dies
+		Then robot is dead
 			
-			
+	
 			
 			
 			

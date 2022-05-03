@@ -69,11 +69,6 @@ public class FeaturesTest {
 	obstacle = new Obstacle(TyleType.ConveyorE);
     }
     
-    @Given("An Obstacle tile Barrel")
-    public void an_obstacle_tile_barrel() {
-	obstacle = new Obstacle(TyleType.Barrel);
-    }
-    
     @Given("An Obstacle tile Acid")
     public void an_obstacle_tile_acid() {
 	obstacle = new Obstacle(TyleType.Acid);
@@ -124,6 +119,11 @@ public class FeaturesTest {
     public void robot_steps_on_an_obstacle_tile() {
         p = new Player("Player 1");
         p.obstacleInteract(obstacle);
+    }
+    
+    @When("robot dies")
+    public void robot_dies() {
+        game.getPlayers().get(0).getRobot().takeDamage(3);
     }
 
     @Then("A game is created")
@@ -289,13 +289,7 @@ public class FeaturesTest {
     @Then("Robot interacts with the ConveyorE")
     public void robot_interacts_with_the_conveyor_e() {
 	assertEquals(p.getRobot().getDir(),1);
-    }
-    
-    @Then("Robot interacts with the Barrel")
-    public void robot_interacts_with_the_barrel() {
-        assertEquals(p.getRobot().getDir(),0);
-        assertArrayEquals(p.getRobot().getCoor(),new int[] {5,6});
-    }
+    }      
     
     @Then("Robot interacts with the Acid")
     public void robot_interacts_with_the_acid() {
@@ -305,5 +299,10 @@ public class FeaturesTest {
     @Then("Robot interacts with the Checkpoint")
     public void robot_interacts_with_the_checkpoint() {
         assertTrue(p.hasWon());
+    }
+    
+    @Then("robot is dead")
+    public void robot_is_dead() {
+        assertTrue(game.getPlayers().get(0).getRobot().isDead());
     }
 }
